@@ -1,0 +1,34 @@
+.c-filter-pill {
+  position: relative;
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  max-width: 100%;
+  padding: var(--space-1-5) var(--space-1-5) var(--space-1-5) var(--space-3);
+  border: 0; border-radius: var(--radius-full);
+  background: var(--color-selection-bg); color: var(--color-selection-text);
+  box-shadow: inset 0 0 0 1px var(--color-selection-border);
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: var(--label-font-size); line-height: var(--label-line-height); letter-spacing: var(--label-letter-spacing);
+  cursor: pointer;
+  transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
+}
+/* 34px visual → 44px tap target */
+.c-filter-pill::after { content: ''; position: absolute; inset: -5px 0; }
+.c-filter-pill__label { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.c-filter-pill__close {
+  display: grid; place-items: center; flex: none;
+  width: 20px; height: 20px; border-radius: var(--radius-full);
+  background: var(--color-selection-bg); color: var(--color-selection-control-icon);
+  transition: background-color 150ms ease-out, color 150ms ease-out;
+}
+
+.c-filter-pill:hover, .c-filter-pill[data-state='hover'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); }
+.c-filter-pill:hover .c-filter-pill__close, .c-filter-pill[data-state='hover'] .c-filter-pill__close { background: var(--color-selection-control-bg-hover); color: var(--color-selection-control-icon-hover); }
+
+.c-filter-pill:active, .c-filter-pill[data-state='pressed'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); transition-duration: 90ms; }
+.c-filter-pill:active .c-filter-pill__close, .c-filter-pill[data-state='pressed'] .c-filter-pill__close { background: var(--color-selection-control-bg-pressed); color: var(--color-selection-control-icon-hover); transition-duration: 90ms; }
+
+.c-filter-pill:focus-visible, .c-filter-pill[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); transition: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .c-filter-pill:active, .c-filter-pill[data-state='pressed'] { transform: scale(0.96); }
+}

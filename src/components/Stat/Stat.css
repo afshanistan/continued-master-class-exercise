@@ -1,0 +1,14 @@
+.c-stat { display: flex; flex-direction: column; gap: var(--space-2); }
+.c-stat__figure {
+  font-family: var(--font-serif); font-weight: 600; color: var(--color-text-accent-on-inverse);
+  font-size: var(--heading-font-size); line-height: var(--heading-line-height); letter-spacing: var(--heading-letter-spacing);
+  font-variant-numeric: lining-nums;
+}
+.c-stat__label {
+  font-family: var(--font-sans); font-weight: 500; color: var(--color-text-on-inverse-muted);
+  font-size: var(--label-font-size); line-height: var(--label-line-height); letter-spacing: var(--label-letter-spacing);
+}
+.c-stat--inline { flex-direction: row; align-items: baseline; }
+@media (max-width: 767.98px) {
+  .c-stat--auto { flex-direction: row; align-items: baseline; }
+}
