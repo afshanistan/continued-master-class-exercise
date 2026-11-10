@@ -1,0 +1,14 @@
+/* Generated from Figma text styles. Sizes come from the responsive role tokens in tokens.css. */
+.text-display { font-family: var(--font-serif); font-weight: 600; font-size: var(--display-font-size); line-height: var(--display-line-height); letter-spacing: var(--display-letter-spacing); }
+.text-display-small { font-family: var(--font-serif); font-weight: 600; font-size: var(--display-small-font-size); line-height: var(--display-small-line-height); letter-spacing: var(--display-small-letter-spacing); }
+.text-heading { font-family: var(--font-serif); font-weight: 600; font-size: var(--heading-font-size); line-height: var(--heading-line-height); letter-spacing: var(--heading-letter-spacing); }
+.text-title-large { font-family: var(--font-serif); font-weight: 600; font-size: var(--title-large-font-size); line-height: var(--title-large-line-height); letter-spacing: var(--title-large-letter-spacing); }
+.text-title { font-family: var(--font-serif); font-weight: 700; font-size: var(--title-font-size); line-height: var(--title-line-height); letter-spacing: var(--title-letter-spacing); }
+.text-quote { font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: var(--quote-font-size); line-height: var(--quote-line-height); letter-spacing: var(--quote-letter-spacing); }
+.text-body-large { font-family: var(--font-sans); font-weight: 400; font-size: var(--body-large-font-size); line-height: var(--body-large-line-height); letter-spacing: var(--body-large-letter-spacing); }
+.text-body { font-family: var(--font-sans); font-weight: 400; font-size: var(--body-font-size); line-height: var(--body-line-height); letter-spacing: var(--body-letter-spacing); }
+.text-body-small { font-family: var(--font-sans); font-weight: 400; font-size: var(--body-small-font-size); line-height: var(--body-small-line-height); letter-spacing: var(--body-small-letter-spacing); }
+.text-button { font-family: var(--font-sans); font-weight: 600; font-size: var(--button-font-size); line-height: var(--button-line-height); letter-spacing: var(--button-letter-spacing); }
+.text-label { font-family: var(--font-sans); font-weight: 500; font-size: var(--label-font-size); line-height: var(--label-line-height); letter-spacing: var(--label-letter-spacing); }
+.text-label-strong { font-family: var(--font-sans); font-weight: 600; font-size: var(--label-strong-font-size); line-height: var(--label-strong-line-height); letter-spacing: var(--label-strong-letter-spacing); }
+.text-eyebrow { font-family: var(--font-sans); font-weight: 600; font-size: var(--eyebrow-font-size); line-height: var(--eyebrow-line-height); letter-spacing: var(--eyebrow-letter-spacing); text-transform: uppercase; }
