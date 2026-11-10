@@ -25,3 +25,15 @@ export const Playground: Story = {};
 export const Default: Story = { render: () => <Row tone="default" surface="light" label="Log in" /> };
 export const Subtle: Story = { render: () => <Row tone="subtle" surface="light" label="850 reviews" /> };
 export const OnDark: Story = { globals: { backgrounds: { value: 'inverse' } }, render: () => <Row tone="default" surface="dark" label="Log in" /> };
+
+/** Hover to see the wipe; the second link wraps to show each line gets its own underline. */
+export const Wipe: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 24, width: 220 }}>
+      <TextLink href="#">Clear all</TextLink>
+      <p className="text-body-small" style={{ margin: 0 }}>
+        Inline in a sentence: <TextLink href="#" tone="subtle">TrustScore details and all 850 reviews on Trustpilot</TextLink>, updated weekly.
+      </p>
+    </div>
+  ),
+};
