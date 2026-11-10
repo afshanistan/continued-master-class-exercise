@@ -358,3 +358,19 @@
     --layout-card-height: 616px;
   }
 }
+
+/* ── Motion ─────────────────────────────────────────────────────────────
+   One feel for every transition. ease-out = "ease-out quint": fast start,
+   soft landing, so deceleration is visible even over short distances.
+   Color-only changes use --duration-fast; things that travel (wipes, draws)
+   use --duration-move so the curve has time to read. */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-press: 90ms;   /* :active feedback */
+  --duration-fast: 150ms;   /* hover color / shadow */
+  --duration-move: 220ms;   /* underline wipe, checkbox draw, menu slide */
+  --duration-retract: 180ms;/* reverse of a move (hover out) */
+  --duration-sheet-in: 280ms;
+  --duration-sheet-out: 220ms;
+}

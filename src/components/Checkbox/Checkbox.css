@@ -5,7 +5,7 @@
   display: grid; place-items: center;
   background: var(--color-control-bg);
   box-shadow: inset 0 0 0 1.5px var(--color-control-checkbox-border);
-  transition: background-color 90ms ease-out, box-shadow 150ms ease-out;
+  transition: background-color var(--duration-press) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
   /* Visuals sit above the invisible input; let every click pass through to it. */
   pointer-events: none;
 }
@@ -23,7 +23,7 @@ label[data-state='hover'] .c-checkbox__box { box-shadow: inset 0 0 0 1.5px var(-
 /* Draw the check on (fill lands first, then the stroke writes in). Unchecking is instant.
    Reduced motion: no transition, so the check simply appears. */
 @media (prefers-reduced-motion: no-preference) {
-  .c-checkbox__input:checked + .c-checkbox__box .c-checkbox__check path { transition: stroke-dashoffset 200ms ease-out 60ms; }
+  .c-checkbox__input:checked + .c-checkbox__box .c-checkbox__check path { transition: stroke-dashoffset var(--duration-move) var(--ease-out) 60ms; }
 }
 label:hover .c-checkbox__input:checked + .c-checkbox__box, .c-checkbox[data-state='hover'] .c-checkbox__input:checked + .c-checkbox__box,
 label[data-state='hover'] .c-checkbox__input:checked + .c-checkbox__box { background: var(--color-action-primary-hover); }

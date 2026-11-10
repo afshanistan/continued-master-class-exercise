@@ -5,7 +5,7 @@
   font-family: var(--font-sans); font-weight: 600;
   font-size: var(--button-font-size); line-height: var(--button-line-height); letter-spacing: var(--button-letter-spacing);
   white-space: nowrap; text-decoration: none;
-  transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
+  transition: background-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
 }
 .c-button--large { min-height: var(--size-control-lg); padding: 0 var(--space-6); }
 .c-button--medium { min-height: var(--size-control-md); padding: 0 var(--space-4); }
@@ -14,12 +14,12 @@
 /* On light */
 .c-button--light { background: var(--color-action-primary); color: var(--color-text-on-action); box-shadow: var(--shadow-1); }
 .c-button--light:hover, .c-button--light[data-state='hover'] { background: var(--color-action-primary-hover); box-shadow: var(--shadow-2); }
-.c-button--light:active, .c-button--light[data-state='pressed'] { background: var(--color-action-primary-pressed); box-shadow: none; transition-duration: 90ms; }
+.c-button--light:active, .c-button--light[data-state='pressed'] { background: var(--color-action-primary-pressed); box-shadow: none; transition-duration: var(--duration-press); }
 
 /* On dark */
 .c-button--dark { background: var(--color-action-primary-on-inverse); color: var(--color-text-on-action-inverse); }
 .c-button--dark:hover, .c-button--dark[data-state='hover'] { background: var(--color-action-primary-on-inverse-hover); }
-.c-button--dark:active, .c-button--dark[data-state='pressed'] { background: var(--color-action-primary-on-inverse-pressed); transition-duration: 90ms; }
+.c-button--dark:active, .c-button--dark[data-state='pressed'] { background: var(--color-action-primary-on-inverse-pressed); transition-duration: var(--duration-press); }
 
 /* Focus: teal on light, gold on dark. Instant. */
 .c-button:focus-visible, .c-button[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); transition: none; }

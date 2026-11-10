@@ -1,37 +1,41 @@
 /*
- * Underline = track + fill, drawn with two background layers (not text-decoration,
- * which can't animate a wipe).
- *   Track: 1px, always visible, says "this is a link" at rest.
- *   Fill:  2px in the link color, wipes left → right on hover (150ms ease-out),
- *          retracts on hover out (200ms). Reduced motion: appears instantly.
+ * Underline = track + fill.
+ *   Track: 1px bottom border, always visible, says "this is a link" at rest.
+ *   Fill:  2px bar (::before) in the link color that wipes left → right on hover
+ *          with transform: scaleX (220ms, --ease-out) and retracts on hover out (180ms).
+ *          Reduced motion: appears instantly.
+ * Why not a background gradient: axe can't compute text contrast over one and
+ * reports "inconclusive". Borders and a small pseudo-element don't block it.
+ * Trade-off: inline-block, so a link that wraps only underlines its last line.
  */
 .c-link {
   --track: color-mix(in srgb, currentColor 35%, transparent);
   position: relative;
-  /* In a flex/grid parent the link is blockified; keep the track the width of the text. */
+  display: inline-block;
+  /* In a flex/grid parent, keep the link the width of its text. */
   justify-self: start; align-self: start; width: fit-content;
   font-family: var(--font-sans); font-weight: 500;
   font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
   text-decoration: none;
   padding-bottom: 2px;
-  background-image:
-    linear-gradient(currentColor, currentColor),   /* fill */
-    linear-gradient(var(--track), var(--track));   /* track */
-  background-repeat: no-repeat;
-  background-position: 0 100%, 0 100%;
-  background-size: 0% 2px, 100% 1px;
-  -webkit-box-decoration-break: clone; box-decoration-break: clone; /* each wrapped line gets its own line */
-  transition: color 200ms ease-out;
+  border-bottom: 1px solid var(--track);
+  transition: color var(--duration-fast) var(--ease-out);
 }
-/* Tap target: reach 44px without changing layout */
-.c-link::after { content: ''; position: absolute; inset: -10px -4px; }
-
-.c-link:hover, .c-link[data-state='hover'] { background-size: 100% 2px, 100% 1px; transition-duration: 150ms; }
+.c-link::before {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: currentColor;
+  transform: scaleX(0); transform-origin: left center;
+  pointer-events: none;
+}
+.c-link:hover::before, .c-link[data-state='hover']::before { transform: scaleX(1); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .c-link { transition: color 200ms ease-out, background-size 200ms ease-out; }
-  .c-link:hover, .c-link[data-state='hover'] { transition-duration: 150ms; }
+  .c-link::before { transition: transform var(--duration-retract) var(--ease-out); }
+  .c-link:hover::before, .c-link[data-state='hover']::before { transition-duration: var(--duration-move); }
 }
+
+/* Tap target: reach 44px without changing layout */
+.c-link::after { content: ''; position: absolute; inset: -10px -4px; }
 
 /* Tones */
 .c-link--default.c-link--light { color: var(--color-text-link); }
@@ -44,5 +48,5 @@
 .c-link--dark { color: var(--color-text-on-inverse); --track: color-mix(in srgb, currentColor 50%, transparent); }
 .c-link--dark:hover, .c-link--dark[data-state='hover'] { color: var(--color-base-white); }
 
-.c-link:focus-visible, .c-link[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); border-radius: 2px; transition: none; }
+.c-link:focus-visible, .c-link[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); border-radius: 2px; }
 .c-link--dark:focus-visible, .c-link--dark[data-state='focus'] { outline-color: var(--color-focus-ring-on-inverse); }
