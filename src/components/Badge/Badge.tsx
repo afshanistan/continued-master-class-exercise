@@ -8,8 +8,8 @@ export function NewTag() {
 /** Solid magenta count, e.g., number of applied filters. */
 export function CountBadge({ count, label }: { count: number; label?: string }) {
   return (
-    <span className="c-count-badge" aria-label={label ?? `${count} applied`}>
-      {count}
+    <span className="c-count-badge">
+      {count}<span className="visually-hidden"> {label ?? 'applied'}</span>
     </span>
   );
 }

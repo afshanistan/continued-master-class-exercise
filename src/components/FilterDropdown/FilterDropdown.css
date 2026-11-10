@@ -1,0 +1,32 @@
+/* Shared by Filter Dropdown and Filters Button (same control family). */
+.c-dropdown {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: var(--size-touch-target);
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  border: 0; border-radius: var(--radius-full);
+  background: var(--color-control-bg); color: var(--color-control-text);
+  box-shadow: inset 0 0 0 1px var(--color-control-border);
+  font-family: var(--font-sans); font-size: var(--body-font-size); line-height: var(--body-line-height); letter-spacing: var(--body-letter-spacing);
+  white-space: nowrap; cursor: pointer;
+  transition: background-color var(--duration-hover-out) var(--ease-out), box-shadow var(--duration-hover-out) var(--ease-out), color var(--duration-hover-out) var(--ease-out);
+}
+.c-dropdown__chevron { flex: none; }
+
+/* Not applied */
+.c-dropdown:hover, .c-dropdown[data-state='hover'] { box-shadow: inset 0 0 0 1px var(--color-control-border-interactive); color: var(--color-control-active); transition-duration: var(--duration-fast); }
+.c-dropdown[aria-expanded='true'] { box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); }
+.c-dropdown:active, .c-dropdown[data-state='pressed'] { background: var(--color-selection-bg); box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); transition-duration: var(--duration-press); }
+
+/* Applied: magenta at rest, deeper on hover / pressed / open */
+.c-dropdown[data-applied] { box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); }
+.c-dropdown[data-applied]:hover, .c-dropdown[data-applied][data-state='hover'],
+.c-dropdown[data-applied][aria-expanded='true'] { box-shadow: inset 0 0 0 1px var(--color-control-active-strong); color: var(--color-control-active-strong); }
+.c-dropdown[data-applied]:active, .c-dropdown[data-applied][data-state='pressed'] { background: var(--color-selection-bg); box-shadow: inset 0 0 0 1px var(--color-control-active-strong); color: var(--color-control-active-strong); }
+
+.c-dropdown:focus-visible, .c-dropdown[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); }
+
+/* Open: chevron flips. Animated only when motion is allowed. */
+.c-dropdown[aria-expanded='true'] .c-dropdown__chevron { transform: rotate(180deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .c-dropdown__chevron { transition: transform var(--duration-fast) var(--ease-out); }
+}

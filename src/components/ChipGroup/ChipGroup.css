@@ -1,0 +1,7 @@
+.c-chip-group { display: flex; flex-direction: column; gap: var(--space-3); }
+.c-chip-group__heading {
+  margin: 0; color: var(--color-text-primary);
+  font-family: var(--font-sans); font-weight: 600;
+  font-size: var(--label-strong-font-size); line-height: var(--label-strong-line-height); letter-spacing: var(--label-strong-letter-spacing);
+}
+.c-chip-group__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); }

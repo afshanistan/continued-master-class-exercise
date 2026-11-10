@@ -17,7 +17,9 @@
   font-family: var(--font-sans); font-weight: 500;
   font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
   text-decoration: none;
-  padding-bottom: 2px;
+  /* Button reset (as="button"), keeping the track border */
+  appearance: none; background: none; margin: 0; cursor: pointer; text-align: inherit;
+  border: 0; padding: 0 0 2px;
   border-bottom: 1px solid var(--track);
   transition: color var(--duration-fast) var(--ease-out);
 }

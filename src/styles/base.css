@@ -44,3 +44,9 @@ a { color: inherit; }
 
 /* Keep short phrases (e.g., "$129/year") from breaking. */
 .nowrap { white-space: nowrap; }
+
+/* Page scroll lock while a modal sheet is open */
+html.is-scroll-locked { overflow: hidden; }
+
+/* iOS: no default gray-blue tap flash; every control has its own pressed state. */
+a, button, label, input { -webkit-tap-highlight-color: transparent; }

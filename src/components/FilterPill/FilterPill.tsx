@@ -1,8 +1,8 @@
 import { X } from 'lucide-react';
-import type { ButtonHTMLAttributes } from 'react';
+import type { ComponentPropsWithRef } from 'react';
 import './FilterPill.css';
 
-export interface FilterPillProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+export interface FilterPillProps extends Omit<ComponentPropsWithRef<'button'>, 'children'> {
   label: string;
   'data-state'?: 'hover' | 'pressed' | 'focus';
 }
