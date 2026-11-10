@@ -1,0 +1,14 @@
+.c-topic-pill {
+  display: inline-flex; align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans); font-weight: 600;
+  font-size: var(--label-strong-font-size); line-height: var(--label-strong-line-height); letter-spacing: var(--label-strong-letter-spacing);
+  background: var(--pill-bg); color: var(--pill-text);
+}
+.c-topic-pill--neuro { --pill-bg: var(--color-topic-neuro-pill-bg); --pill-text: var(--color-topic-neuro-pill-text); }
+.c-topic-pill--dysphagia { --pill-bg: var(--color-topic-dysphagia-pill-bg); --pill-text: var(--color-topic-dysphagia-pill-text); }
+.c-topic-pill--aac { --pill-bg: var(--color-topic-aac-pill-bg); --pill-text: var(--color-topic-aac-pill-text); }
+.c-topic-pill--language { --pill-bg: var(--color-topic-language-pill-bg); --pill-text: var(--color-topic-language-pill-text); }
+.c-topic-pill--early-intervention { --pill-bg: var(--color-topic-early-intervention-pill-bg); --pill-text: var(--color-topic-early-intervention-pill-text); }
+.c-topic-pill--dementia { --pill-bg: var(--color-topic-dementia-pill-bg); --pill-text: var(--color-topic-dementia-pill-text); }

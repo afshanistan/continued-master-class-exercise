@@ -1,0 +1,21 @@
+.c-link {
+  position: relative;
+  font-family: var(--font-sans); font-weight: 500;
+  font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
+  text-underline-offset: 3px; text-decoration-thickness: 1px;
+  transition: color 150ms ease-out;
+}
+/* Tap target: reach 44px without changing layout */
+.c-link::after { content: ''; position: absolute; inset: -10px -4px; }
+
+.c-link--default.c-link--light { color: var(--color-text-link); text-decoration: none; }
+.c-link--default.c-link--light:hover, .c-link--default.c-link--light[data-state='hover'] { color: var(--color-text-link-hover); text-decoration: underline; }
+
+.c-link--subtle.c-link--light { color: var(--color-text-link-subtle); text-decoration: underline; }
+.c-link--subtle.c-link--light:hover, .c-link--subtle.c-link--light[data-state='hover'] { color: var(--color-text-link-subtle-hover); }
+
+.c-link--dark { color: var(--color-text-on-inverse); text-decoration: underline; }
+.c-link--dark:hover, .c-link--dark[data-state='hover'] { color: var(--color-base-white); }
+
+.c-link:focus-visible, .c-link[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); border-radius: 2px; transition: none; }
+.c-link--dark:focus-visible, .c-link--dark[data-state='focus'] { outline-color: var(--color-focus-ring-on-inverse); }
