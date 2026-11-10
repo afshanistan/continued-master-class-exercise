@@ -15,9 +15,9 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 1 | ⬜ | Section / Hero → Stats | "28+ Expert instructors" → **"20+ Expert instructors"** | 21 distinct presenters across the 16 courses (Nov 10 audit) |
 | 2 | ⬜ | Section / Catalog → Grid (16 cards) | Replace comp course data with the real 16 courses: short titles, taught-by, hours, CEUs, review counts, outcomes. Source: `src/data/courses.ts` | Real course names agreed Nov 10; 5 comp titles differ |
 | 3 | ⬜ | Course Image instances | Swap in the real course photos (`src/assets/courses/*.jpg`, named by course) | Photos renamed to match real courses |
-| 4 | ⬜ | Course Card → Metadata | Star rating "4.8 (642)" → **review count** "2,498 reviews" with a speech-bubble icon. Remove the star | Decided Nov 10: show review counts, not star ratings |
-| 5 | ⬜ | Icon library | Code meta icons are Lucide **Clock**, **Award** (CEUs), **MessageSquare** (reviews). Figma uses Clock, Credit, Star. Add a reviews icon; confirm Credit vs Award | Keep icon set in sync |
-| 6 | ⬜ | Course Card | When a course has **0 reviews**, the review item is hidden (School-Based Teletherapy placeholder) | Avoids "0 reviews" |
+| 4 | ⬜ | Course Card → Metadata | **Superseded by #20:** remove the star rating and the review count from the card entirely | Nov 10: reviews don't distinguish courses; page-level Trustpilot carries trust |
+| 5 | ⬜ | Icon library / Meta Item | **Superseded by #20:** the card meta has no icons now. Meta Item (and its Clock / Credit / Star icons) is no longer used on the card | Simpler footer line |
+| 6 | — | Course Card | ~~Hide review count at 0~~. Moot: reviews are off the card (#20) | — |
 | 7 | ❓ | Review Card | Quote + attribution ("Dana Scully, MS · Rush Medical") and Trustpilot score/count are still placeholders | Verify before the walkthrough |
 
 ## Components
@@ -41,7 +41,8 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 17 | ⬜ | Filter Drawer prototype | **Clear all** clears the chips and **stays open** (button → "Show 16 courses"). Prototype currently closes | Decided in code Nov 10 |
 | 18 | ⬜ | Section / Catalog | Add an **empty state** frame: "No courses match these filters" + body + "Clear all filters" (Medium button), dashed subtle border, radius lg | New in code; filters AND across groups can return 0 |
 | 19 | ⬜ | Section / Hero (Alignment = Left) | Stats rows: a 1px `border/on-inverse` rule **above each row**, no rule under the last (Figma has top+bottom on the first cell) | Matches code |
-| 20 | ❓ | Course Card / Catalog grid | **Card size:** cards feel too big at 432 × 632. Proposal: 4 columns on desktop (~318 wide), padding 24, smaller title. Would update `layout/card-width`, `layout/card-height`, and the grid | Open, Nov 10 |
+| 20 | ⬜ | Course Card + Section / Catalog grid | **Card resize (decided Nov 10):** **Grid:** 4 columns at full desktop (cards ~318 × ~549), 3 at ~1200–1367, 2 on tablet, 1 on phone (code: `repeat(auto-fill, minmax(300px, 1fr))`). Update `layout/card-width` Desktop 432 → **318** and `layout/card-height` Desktop 632 → **549**. **Card order:** Topic Pill (+ New) → Title → Taught by → Outcome → **Footer**. **Footer** (pinned to bottom): 1px `border/subtle` top rule, 16 padding-top, then "5 hrs · 0.5 CEUs" (Body/Small, weight 500, `text/secondary`, no icons), 16 gap, full-width View course. **Remove** the meta row between pill and title, and the review count. **Padding** 32 → **24**; gaps between groups 16. **Title** 20 → **18**/24 serif semibold (card only) | Cards were too big at 432 × 632; 4 × 4 also removes the orphan last card |
+| 22 | ⬜ | Section / Catalog → all 16 cards | **Outcome copy rewritten** to ~100 characters each (72–105) so outcomes stay at 16px with no truncation (max 4 lines at 318). Source: `src/data/courses.ts` | Decided Nov 10; no truncated text |
 
 ## Variables and styles
 

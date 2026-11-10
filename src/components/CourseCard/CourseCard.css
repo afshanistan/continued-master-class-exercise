@@ -4,17 +4,27 @@
   border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg);
   overflow: hidden;
 }
-.c-course-card__content { flex: 1; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-8); }
-.c-course-card__body { display: flex; flex-direction: column; gap: var(--space-5); }
-.c-course-card__labels { display: flex; flex-direction: column; gap: var(--space-3); }
+.c-course-card__content { flex: 1; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); }
 .c-course-card__tags { display: flex; align-items: center; gap: var(--space-2); }
-.c-course-card__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
 .c-course-card__heading { display: flex; flex-direction: column; gap: var(--space-2); }
-.c-course-card__title { margin: 0; color: var(--color-text-primary); }
+/* Card title: one step below Title (18/24 serif semibold) so 4-across cards stay balanced. */
+.c-course-card__title {
+  margin: 0; color: var(--color-text-primary);
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: var(--font-size-18); line-height: var(--line-height-24); letter-spacing: var(--title-letter-spacing);
+}
 .c-course-card__taught { margin: 0; color: var(--color-text-secondary); }
 .c-course-card__outcome { margin: 0; color: var(--color-text-primary); }
-/* Button sits at the bottom so buttons line up across a row. */
-.c-course-card__cta { margin-top: auto; }
+
+/* Footer: pinned to the bottom so hours/CEUs and buttons align across a row. */
+.c-course-card__footer {
+  margin-top: auto; display: flex; flex-direction: column; gap: var(--space-4);
+  padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);
+}
+.c-course-card__meta {
+  margin: 0; color: var(--color-text-secondary); font-family: var(--font-sans); font-weight: 500;
+  font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
+}
 
 /* Title link: underline fades in on hover (titles wrap, so no wipe here). */
 .c-course-card__title a {

@@ -280,8 +280,8 @@
   --layout-join-card-width: 640px;
   --layout-join-case-min-width: 480px;
   --layout-join-case-max-width: 640px;
-  --layout-card-width: 432px;
-  --layout-card-height: 632px;
+  --layout-card-width: 318px; /* reference only; the grid sizes cards */
+  --layout-card-height: 549px; /* reference only */
   --space-nav-y: var(--space-6);
   --space-hero-top: var(--space-24);
   --space-hero-bottom: var(--space-24);
