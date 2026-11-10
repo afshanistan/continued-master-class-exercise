@@ -368,7 +368,8 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --duration-press: 90ms;   /* :active feedback */
-  --duration-fast: 150ms;   /* hover color / shadow */
+  --duration-fast: 150ms;   /* hover color / shadow (in) */
+  --duration-hover-out: 200ms; /* hover color / shadow (out): leaving is slightly slower */
   --duration-move: 220ms;   /* underline wipe, checkbox draw, menu slide */
   --duration-retract: 180ms;/* reverse of a move (hover out) */
   --duration-sheet-in: 280ms;

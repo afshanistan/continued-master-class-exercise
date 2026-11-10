@@ -1,0 +1,27 @@
+.c-course-card {
+  display: flex; flex-direction: column; height: 100%;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.c-course-card__content { flex: 1; display: flex; flex-direction: column; gap: var(--space-8); padding: var(--space-8); }
+.c-course-card__body { display: flex; flex-direction: column; gap: var(--space-5); }
+.c-course-card__labels { display: flex; flex-direction: column; gap: var(--space-3); }
+.c-course-card__tags { display: flex; align-items: center; gap: var(--space-2); }
+.c-course-card__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+.c-course-card__heading { display: flex; flex-direction: column; gap: var(--space-2); }
+.c-course-card__title { margin: 0; color: var(--color-text-primary); }
+.c-course-card__taught { margin: 0; color: var(--color-text-secondary); }
+.c-course-card__outcome { margin: 0; color: var(--color-text-primary); }
+/* Button sits at the bottom so buttons line up across a row. */
+.c-course-card__cta { margin-top: auto; }
+
+/* Title link: underline fades in on hover (titles wrap, so no wipe here). */
+.c-course-card__title a {
+  color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--duration-hover-out) var(--ease-out);
+  border-radius: 2px;
+}
+.c-course-card__title a:hover { text-decoration-color: currentColor; transition-duration: var(--duration-fast); }
+.c-course-card__title a:focus-visible { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); }

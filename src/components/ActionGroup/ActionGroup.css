@@ -1,0 +1,8 @@
+.c-actions { display: flex; align-items: center; gap: var(--space-6); }
+.c-actions__login {
+  margin: 0; white-space: nowrap; color: var(--color-text-on-inverse-muted);
+  font-family: var(--font-sans); font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
+}
+/* Stacked: full-width button, login centered below. Also used by Offer Card on tablet/mobile. */
+.c-actions--stacked { flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
+.c-actions--stacked .c-actions__join { width: 100%; }

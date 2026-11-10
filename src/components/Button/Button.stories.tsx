@@ -30,3 +30,6 @@ export const OnDark: Story = {
   render: () => <div style={{ display: 'grid', gap: 24 }}><Row surface="dark" size="large" /><Row surface="dark" size="medium" /></div>,
 };
 export const FullWidth: Story = { args: { fullWidth: true, children: 'View course' }, decorators: [(S) => <div style={{ width: 320 }}><S /></div>] };
+
+/** Navigating actions (Join now, View course) render a real link with the same look. */
+export const AsLink: Story = { args: { href: '#', children: 'View course' } };

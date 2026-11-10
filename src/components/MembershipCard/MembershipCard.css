@@ -1,0 +1,12 @@
+.c-membership {
+  display: flex; flex-direction: column; gap: var(--space-8);
+  width: 100%; max-width: var(--layout-join-card-width);
+  padding: var(--space-card-padding); border-radius: var(--radius-lg);
+  background: var(--color-surface-inverse); color: var(--color-text-on-inverse);
+}
+.c-membership__header { display: flex; flex-direction: column; gap: var(--space-2); }
+.c-membership__eyebrow { margin: 0; color: var(--color-text-accent-on-inverse); }
+.c-membership__price { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-3); }
+.c-membership__monthly { color: var(--color-text-on-inverse-muted); }
+.c-membership__includes { margin: 0; }
+.c-membership__benefits { margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }

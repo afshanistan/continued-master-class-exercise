@@ -1,22 +1,25 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
 import './Button.css';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Common {
   /** Light = magenta 700 on light surfaces. Dark = magenta 300 on dark teal. */
   surface?: 'light' | 'dark';
   size?: 'large' | 'medium';
   fullWidth?: boolean;
   children: ReactNode;
 }
+type AsButton = Common & ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined };
+/** Pass href when the action navigates (Join now, View course): renders a real <a>. */
+type AsLink = Common & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string };
+export type ButtonProps = AsButton | AsLink;
 
-export function Button({ surface = 'light', size = 'large', fullWidth, className, children, type = 'button', ...rest }: ButtonProps) {
-  return (
-    <button
-      type={type}
-      className={['c-button', `c-button--${surface}`, `c-button--${size}`, fullWidth && 'c-button--full', className].filter(Boolean).join(' ')}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
+export function Button(props: ButtonProps) {
+  const { surface = 'light', size = 'large', fullWidth, className, children } = props;
+  const cls = ['c-button', `c-button--${surface}`, `c-button--${size}`, fullWidth && 'c-button--full', className].filter(Boolean).join(' ');
+  if (props.href !== undefined) {
+    const { surface: _s, size: _z, fullWidth: _f, className: _c, children: _ch, ...rest } = props;
+    return <a className={cls} {...rest}>{children}</a>;
+  }
+  const { surface: _s, size: _z, fullWidth: _f, className: _c, children: _ch, type = 'button', ...rest } = props;
+  return <button type={type} className={cls} {...rest}>{children}</button>;
 }
