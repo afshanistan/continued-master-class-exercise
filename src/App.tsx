@@ -1,8 +1,19 @@
+import { Navigation } from './sections/Navigation/Navigation';
+import { Hero } from './sections/Hero/Hero';
+import { Catalog } from './sections/Catalog/Catalog';
+import { Join } from './sections/Join/Join';
+import { Footer } from './sections/Footer/Footer';
+
 export default function App() {
   return (
-    <main style={{ padding: 48, fontFamily: 'Inter, sans-serif' }}>
-      <h1 style={{ fontFamily: 'Fraunces, serif' }}>Master Classes</h1>
-      <p>Prototype scaffold. Components coming soon.</p>
-    </main>
+    <>
+      <Navigation />
+      <main>
+        <Hero />
+        <Catalog />
+        <Join />
+      </main>
+      <Footer />
+    </>
   );
 }

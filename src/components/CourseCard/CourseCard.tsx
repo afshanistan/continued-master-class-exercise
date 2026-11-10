@@ -28,7 +28,7 @@ export function CourseCard({ course: c, headingLevel = 3 }: { course: Course; he
             <div className="c-course-card__meta">
               <MetaItem icon={Clock}>{formatHours(c.hours)}</MetaItem>
               <MetaItem icon={Award}>{formatCeus(c.hours)}</MetaItem>
-              <MetaItem icon={MessageSquare}>{formatReviews(c.reviews)}</MetaItem>
+              {c.reviews > 0 && <MetaItem icon={MessageSquare}>{formatReviews(c.reviews)}</MetaItem>}
             </div>
           </div>
           <div className="c-course-card__heading">

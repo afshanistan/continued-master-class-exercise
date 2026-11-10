@@ -1,0 +1,15 @@
+.s-catalog { padding: 0 var(--layout-margin); background: var(--color-surface-page); }
+.s-catalog__content { max-width: var(--layout-max-width); margin: 0 auto; padding: var(--space-section-y) 0; display: flex; flex-direction: column; gap: var(--space-8); }
+.s-catalog__heading { margin: 0; color: var(--color-text-primary); }
+.s-catalog__grid { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--layout-gutter); }
+.s-catalog__grid > li { display: flex; }   /* card stretches to the row height */
+.s-catalog__grid > li > * { flex: 1; }
+@media (max-width: 1199.98px) { .s-catalog__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767.98px) { .s-catalog__grid { grid-template-columns: 1fr; } }
+
+.s-catalog__empty {
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center;
+  padding: var(--space-16) var(--space-6); border: 1px dashed var(--color-border-subtle); border-radius: var(--radius-lg);
+}
+.s-catalog__empty p { margin: 0; }
+.s-catalog__empty .text-body { color: var(--color-text-secondary); margin-bottom: var(--space-3); }
