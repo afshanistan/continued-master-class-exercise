@@ -11,12 +11,13 @@ const VARIANTS = [
   { key: 'plain', label: 'A · Plain' },
   { key: 'shadow', label: 'B · + Shadow (Elevation/1)' },
   { key: 'edge', label: 'C · + Shadow + 2px white edge' },
+  { key: 'gold', label: 'D · Gold 400 + Shadow' },
 ] as const;
 
-/** The gold New pill on every topic tint, three treatments. Watch Language (tan). */
+/** The gold New pill on every topic tint, four treatments. Watch Language (tan). */
 export const Comparison: StoryObj = {
   render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: 'auto repeat(3, 318px)', gap: '20px 24px', alignItems: 'center' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'auto repeat(4, 318px)', gap: '20px 24px', alignItems: 'center' }}>
       <span />
       {VARIANTS.map((v) => <span key={v.key} className="text-label-strong">{v.label}</span>)}
       {(Object.keys(TOPIC_LABELS) as Topic[]).map((t) => {

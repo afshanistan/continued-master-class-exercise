@@ -3,3 +3,4 @@
 .x-photo .c-new-tag { position: absolute; top: var(--space-3); left: var(--space-3); z-index: 1; }
 .x-photo--shadow .c-new-tag { box-shadow: var(--shadow-1); }
 .x-photo--edge .c-new-tag { box-shadow: 0 0 0 2px var(--color-base-white), var(--shadow-1); }
+.x-photo--gold .c-new-tag { background: var(--color-gold-400); color: var(--color-gold-900); box-shadow: var(--shadow-1); }
