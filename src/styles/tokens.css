@@ -92,7 +92,7 @@
   --color-action-primary: var(--color-magenta-700);
   --color-action-primary-hover: var(--color-magenta-800);
   --color-action-primary-pressed: var(--color-magenta-900);
-  --color-action-primary-on-inverse-hover: var(--color-magenta-200);
+  --color-action-primary-on-inverse-hover: var(--color-magenta-400); /* was 200; F: hover deepens (wipe) */
   --color-action-primary-on-inverse-pressed: var(--color-magenta-100);
   --color-text-on-action: var(--color-base-white);
   --color-text-primary: var(--color-neutral-900);
@@ -375,6 +375,9 @@
   --duration-color-in: 200ms;
   --duration-color-out: 250ms;
   --duration-color-press: 100ms;
+  /* Wipe fill (dark-surface button hover): wipe in / out. Use with --ease-color. */
+  --duration-wipe-in: 380ms;
+  --duration-wipe-out: 250ms;
   --duration-press: 90ms;   /* :active feedback */
   --duration-fast: 150ms;   /* hover color / shadow (in) */
   --duration-hover-out: 200ms; /* hover color / shadow (out): leaving is slightly slower */

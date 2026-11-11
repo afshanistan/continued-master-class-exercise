@@ -13,7 +13,7 @@ export interface ActionGroupProps {
 export function ActionGroup({ layout = 'inline', joinHref = '#join', loginHref = '#login', className }: ActionGroupProps) {
   return (
     <div className={['c-actions', `c-actions--${layout}`, className].filter(Boolean).join(' ')}>
-      <Button surface="dark" href={joinHref} className="c-actions__join">Join now</Button>
+      <Button surface="dark" href={joinHref} arrow className="c-actions__join">Join now</Button>
       <p className="c-actions__login">Already a member? <TextLink surface="dark" href={loginHref}>Log in</TextLink></p>
     </div>
   );

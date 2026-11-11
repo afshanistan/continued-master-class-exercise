@@ -93,3 +93,6 @@
   .x-join.x-join--g .c-button--dark:is(:active, [data-state='pressed']) { transform: scale(0.98); }
   .x-join--f .c-button--dark:is(:active, [data-state='pressed']) .x-arrow { transform: translateX(6px); transition-duration: var(--duration-color-press); }
 }
+
+/* Now that the real dark button wipes (F), switch the base wipe off in rows A–D so they still show their own idea. */
+:is(.x-join--a, .x-join--b, .x-join--c, .x-join--d) .c-button--dark::before { display: none; }

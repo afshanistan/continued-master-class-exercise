@@ -1,6 +1,6 @@
-/* Button: lift and land on light, glow on dark. Timing: hover in 150 / hover out 200 / press 90 / focus instant. */
+/* Button: lift and land on light, wipe fill on dark. */
 .c-button {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   border: 0; border-radius: var(--radius-md);
   font-family: var(--font-sans); font-weight: 600;
   font-size: var(--button-font-size); line-height: var(--button-line-height); letter-spacing: var(--button-letter-spacing);
@@ -17,15 +17,27 @@
 .c-button--light:hover, .c-button--light[data-state='hover'] { background: var(--color-action-primary-hover); box-shadow: var(--shadow-2); }
 .c-button--light:active, .c-button--light[data-state='pressed'] { background: var(--color-action-primary-pressed); box-shadow: none; transition-duration: var(--duration-color-press); }
 
-/* On dark */
-.c-button--dark { background: var(--color-action-primary-on-inverse); color: var(--color-text-on-action-inverse); }
-.c-button--dark:hover, .c-button--dark[data-state='hover'] { background: var(--color-action-primary-on-inverse-hover); }
-.c-button--dark:active, .c-button--dark[data-state='pressed'] { background: var(--color-action-primary-on-inverse-pressed); transition-duration: var(--duration-color-press); }
-
-/* Text (tertiary): pairs with a primary button without competing. Same size and label weight. */
-.c-button--text { background: transparent; color: var(--color-control-active); box-shadow: none; }
-.c-button--text:hover, .c-button--text[data-state='hover'] { background: var(--color-selection-bg-subtle); }
-.c-button--text:active, .c-button--text[data-state='pressed'] { background: var(--color-selection-bg); transition-duration: var(--duration-color-press); }
+/* On dark: deeper wipe (decided Nov 10, exploration F).
+   Hover: a richer magenta (400) wipes in left → right over the 300 base (380ms in / 250 out, --ease-color);
+   the trailing arrow nudges 4px as the fill lands.
+   Press: 400 can't go deeper (500 fails contrast with the dark label), so it presses in: inset shadow,
+   scale 0.98, and the arrow pushes to 6px. Reduced motion: fill appears instantly; no scale or arrow motion. */
+.c-button--dark { position: relative; isolation: isolate; overflow: hidden; background: var(--color-action-primary-on-inverse); color: var(--color-text-on-action-inverse); }
+.c-button--dark::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: var(--color-action-primary-on-inverse-hover); transform: scaleX(0); transform-origin: left center;
+}
+.c-button--dark:is(:hover, [data-state='hover'], :active, [data-state='pressed'])::before { transform: scaleX(1); }
+/* Pressed-in shadow lives on the fill layer (it paints above the button's own background) */
+.c-button--dark:is(:active, [data-state='pressed'])::before { box-shadow: inset 0 3px 8px rgb(55 0 28 / 0.55), inset 0 0 0 1px rgb(55 0 28 / 0.15); }
+.c-button__arrow { flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .c-button--dark::before { transition: transform var(--duration-wipe-out) var(--ease-color); }
+  .c-button--dark:hover::before { transition-duration: var(--duration-wipe-in); }
+  .c-button__arrow { transition: transform var(--duration-wipe-out) var(--ease-color); }
+  .c-button:is(:hover, [data-state='hover']) .c-button__arrow { transform: translateX(4px); transition-duration: var(--duration-wipe-in); }
+  .c-button:is(:active, [data-state='pressed']) .c-button__arrow { transform: translateX(6px); transition-duration: var(--duration-color-press); }
+}
 
 /* Focus: teal on light, gold on dark. Instant. */
 .c-button:focus-visible, .c-button[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); transition: none; }
