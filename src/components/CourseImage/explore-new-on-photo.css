@@ -1,0 +1,5 @@
+/* Exploration only: New pill placed on the course photo. */
+.x-photo { position: relative; width: 318px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; }
+.x-photo .c-new-tag { position: absolute; top: var(--space-3); left: var(--space-3); z-index: 1; }
+.x-photo--shadow .c-new-tag { box-shadow: var(--shadow-1); }
+.x-photo--edge .c-new-tag { box-shadow: 0 0 0 2px var(--color-base-white), var(--shadow-1); }
