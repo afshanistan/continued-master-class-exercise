@@ -1,4 +1,5 @@
-/* Button: lift and land on light, wipe fill on dark. */
+/* Button: a deeper color wipes in left → right on hover (both surfaces).
+   Light also lifts (shadow 1 → 2) and lands on press; dark presses in. */
 .c-button {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   border: 0; border-radius: var(--radius-md);
@@ -12,28 +13,37 @@
 .c-button--medium { min-height: var(--size-control-md); padding: 0 var(--space-4); }
 .c-button--full { width: 100%; }
 
-/* On light */
+/* Wipe layer, shared by both surfaces (not the text variant). The fill is a ::before behind the label. */
+.c-button--light, .c-button--dark { position: relative; isolation: isolate; overflow: hidden; }
+.c-button--light::before, .c-button--dark::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  transform: scaleX(0); transform-origin: left center;
+}
+:is(.c-button--light, .c-button--dark):is(:hover, [data-state='hover'], :active, [data-state='pressed'])::before { transform: scaleX(1); }
+@media (prefers-reduced-motion: no-preference) {
+  :is(.c-button--light, .c-button--dark)::before { transition: transform var(--duration-wipe-out) var(--ease-color), background-color var(--duration-color-press) var(--ease-color); }
+  :is(.c-button--light, .c-button--dark):hover::before { transition-duration: var(--duration-wipe-in), var(--duration-color-press); }
+}
+
+/* On light (decided Nov 10): magenta 800 wipes in over 700 while the button lifts (Elevation 1 → 2).
+   Press: the fill deepens to 900 and the button lands (no shadow) + scale 0.98. White label passes on all three. */
 .c-button--light { background: var(--color-action-primary); color: var(--color-text-on-action); box-shadow: var(--shadow-1); }
-.c-button--light:hover, .c-button--light[data-state='hover'] { background: var(--color-action-primary-hover); box-shadow: var(--shadow-2); }
-.c-button--light:active, .c-button--light[data-state='pressed'] { background: var(--color-action-primary-pressed); box-shadow: none; transition-duration: var(--duration-color-press); }
+.c-button--light::before { background: var(--color-action-primary-hover); }
+.c-button--light:hover, .c-button--light[data-state='hover'] { box-shadow: var(--shadow-2); }
+.c-button--light:active, .c-button--light[data-state='pressed'] { box-shadow: none; transition-duration: var(--duration-color-press); }
+.c-button--light:is(:active, [data-state='pressed'])::before { background: var(--color-action-primary-pressed); }
 
 /* On dark: deeper wipe (decided Nov 10, exploration F).
    Hover: a richer magenta (400) wipes in left → right over the 300 base (380ms in / 250 out, --ease-color);
    the trailing arrow nudges 4px as the fill lands.
    Press: 400 can't go deeper (500 fails contrast with the dark label), so it presses in: inset shadow,
    scale 0.98, and the arrow pushes to 6px. Reduced motion: fill appears instantly; no scale or arrow motion. */
-.c-button--dark { position: relative; isolation: isolate; overflow: hidden; background: var(--color-action-primary-on-inverse); color: var(--color-text-on-action-inverse); }
-.c-button--dark::before {
-  content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
-  background: var(--color-action-primary-on-inverse-hover); transform: scaleX(0); transform-origin: left center;
-}
-.c-button--dark:is(:hover, [data-state='hover'], :active, [data-state='pressed'])::before { transform: scaleX(1); }
+.c-button--dark { background: var(--color-action-primary-on-inverse); color: var(--color-text-on-action-inverse); }
+.c-button--dark::before { background: var(--color-action-primary-on-inverse-hover); }
 /* Pressed-in shadow lives on the fill layer (it paints above the button's own background) */
 .c-button--dark:is(:active, [data-state='pressed'])::before { box-shadow: inset 0 3px 8px rgb(55 0 28 / 0.55), inset 0 0 0 1px rgb(55 0 28 / 0.15); }
 .c-button__arrow { flex: none; }
 @media (prefers-reduced-motion: no-preference) {
-  .c-button--dark::before { transition: transform var(--duration-wipe-out) var(--ease-color); }
-  .c-button--dark:hover::before { transition-duration: var(--duration-wipe-in); }
   .c-button__arrow { transition: transform var(--duration-wipe-out) var(--ease-color); }
   .c-button:is(:hover, [data-state='hover']) .c-button__arrow { transform: translateX(4px); transition-duration: var(--duration-wipe-in); }
   .c-button:is(:active, [data-state='pressed']) .c-button__arrow { transform: translateX(6px); transition-duration: var(--duration-color-press); }
