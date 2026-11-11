@@ -61,12 +61,12 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
           <FilterSelect key={g.key} label={g.label} options={OPTIONS[g.key]} applied={filters[g.key]}
             onApply={(v) => onChange(setGroup(filters, g.key, v))} />
         ))}
-        <p className="c-filter-block__count" aria-live="polite">Showing {shown} of {total} courses</p>
+        <p className="c-filter-block__count" aria-live="polite"><span className="visually-hidden">Showing </span>{shown} of {total} courses</p>
       </div>
 
       <div className="c-filter-block__bar c-filter-block__bar--narrow">
         <FiltersButton count={applied} expanded={drawerOpen} onClick={() => setDrawerOpen(true)} />
-        <p className="c-filter-block__count" aria-live="polite">Showing {shown} of {total}</p>
+        <p className="c-filter-block__count" aria-live="polite"><span className="visually-hidden">Showing </span>{shown} of {total} courses</p>
       </div>
 
       {pills.length > 0 && (

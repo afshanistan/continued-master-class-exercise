@@ -56,7 +56,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 
 | # | Status | Where in Figma | Change to make | Why / source |
 |---|---|---|---|---|
-| 21 | 📝 | Variables (new collection "Motion", optional) | Record motion tokens for reference: ease-out `cubic-bezier(0.22, 1, 0.36, 1)`, ease-in-out `cubic-bezier(0.65, 0, 0.35, 1)`, durations press 90 / fast 150 / hover-out 200 / move 220 / retract 180 / sheet 280 in, 220 out. Use these in Smart Animate where Figma allows | One motion feel across code and prototype |
+| 21 | 📝 | Variables (new collection "Motion", optional) | Record motion tokens for reference: ease-out `cubic-bezier(0.22, 1, 0.36, 1)` (movement), ease-color `cubic-bezier(0.37, 0, 0.63, 1)` with color 200 in / 250 out / 100 press (hover and press colors; use for Smart Animate on state changes), ease-in-out `cubic-bezier(0.65, 0, 0.35, 1)`, durations press 90 / fast 150 / hover-out 200 / move 220 / retract 180 / sheet 280 in, 220 out. Use these in Smart Animate where Figma allows | One motion feel across code and prototype |
 
 ---
 

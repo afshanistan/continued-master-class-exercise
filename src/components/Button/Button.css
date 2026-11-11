@@ -22,6 +22,11 @@
 .c-button--dark:hover, .c-button--dark[data-state='hover'] { background: var(--color-action-primary-on-inverse-hover); }
 .c-button--dark:active, .c-button--dark[data-state='pressed'] { background: var(--color-action-primary-on-inverse-pressed); transition-duration: var(--duration-color-press); }
 
+/* Text (tertiary): pairs with a primary button without competing. Same size and label weight. */
+.c-button--text { background: transparent; color: var(--color-control-active); box-shadow: none; }
+.c-button--text:hover, .c-button--text[data-state='hover'] { background: var(--color-selection-bg-subtle); }
+.c-button--text:active, .c-button--text[data-state='pressed'] { background: var(--color-selection-bg); transition-duration: var(--duration-color-press); }
+
 /* Focus: teal on light, gold on dark. Instant. */
 .c-button:focus-visible, .c-button[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); transition: none; }
 .c-button--dark:focus-visible, .c-button--dark[data-state='focus'] { outline-color: var(--color-focus-ring-on-inverse); }

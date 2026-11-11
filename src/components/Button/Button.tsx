@@ -5,6 +5,8 @@ interface Common {
   /** Light = magenta 700 on light surfaces. Dark = magenta 300 on dark teal. */
   surface?: 'light' | 'dark';
   size?: 'large' | 'medium';
+  /** primary = filled. text = tertiary: no fill/border at rest, tint on hover (e.g., Clear next to Apply). Light surface only. */
+  variant?: 'primary' | 'text';
   fullWidth?: boolean;
   children: ReactNode;
 }
@@ -14,12 +16,12 @@ type AsLink = Common & AnchorHTMLAttributes<HTMLAnchorElement> & { href: string 
 export type ButtonProps = AsButton | AsLink;
 
 export function Button(props: ButtonProps) {
-  const { surface = 'light', size = 'large', fullWidth, className, children } = props;
-  const cls = ['c-button', `c-button--${surface}`, `c-button--${size}`, fullWidth && 'c-button--full', className].filter(Boolean).join(' ');
+  const { surface = 'light', size = 'large', variant = 'primary', fullWidth, className, children } = props;
+  const cls = ['c-button', variant === 'text' ? 'c-button--text' : `c-button--${surface}`, `c-button--${size}`, fullWidth && 'c-button--full', className].filter(Boolean).join(' ');
   if (props.href !== undefined) {
-    const { surface: _s, size: _z, fullWidth: _f, className: _c, children: _ch, ...rest } = props;
+    const { surface: _s, size: _z, variant: _v, fullWidth: _f, className: _c, children: _ch, ...rest } = props;
     return <a className={cls} {...rest}>{children}</a>;
   }
-  const { surface: _s, size: _z, fullWidth: _f, className: _c, children: _ch, type = 'button', ...rest } = props;
+  const { surface: _s, size: _z, variant: _v, fullWidth: _f, className: _c, children: _ch, type = 'button', ...rest } = props;
   return <button type={type} className={cls} {...rest}>{children}</button>;
 }

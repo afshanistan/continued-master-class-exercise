@@ -42,12 +42,12 @@ const CARDS = ['adult-aac-implementation', 'picu-rehabilitation-trends', 'lewy-b
 
 /** E vs. current (D), in real cards. E: squared badge + filled sparkle at the right end of the tag row. */
 export const CardsDvsE: StoryObj = {
-  name: 'Cards: D (current) vs E',
+  name: 'Cards: D vs E (chosen)',
   render: () => (
     <div style={{ display: 'grid', gap: 32 }}>
       {(['photo', 'row'] as const).map((placement) => (
         <div key={placement} style={{ display: 'grid', gap: 12 }}>
-          <span className="text-label-strong">{placement === 'photo' ? 'D · Pill on photo (current)' : 'E · Squared badge + sparkle, right of tag row'}</span>
+          <span className="text-label-strong">{placement === 'photo' ? 'D · Pill on photo (explored)' : 'E · Squared badge + sparkle, right of tag row (chosen)'}</span>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 318px)', gap: 24 }}>
             {CARDS.map((id) => <CourseCard key={id} course={pick(id)} newPlacement={placement} />)}
           </div>

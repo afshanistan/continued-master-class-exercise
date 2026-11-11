@@ -1,7 +1,6 @@
 import type { Ref } from 'react';
 import { SheetHandle } from '../SheetHandle/SheetHandle';
 import { CloseButton } from '../CloseButton/CloseButton';
-import { TextLink } from '../TextLink/TextLink';
 import { Button } from '../Button/Button';
 import './DrawerParts.css';
 
@@ -21,7 +20,7 @@ export function DrawerHeader({ title = 'Filters', titleId, titleRef, onClose }: 
 export function DrawerFooter({ count, onClear, onShow }: { count: number; onClear: () => void; onShow: () => void }) {
   return (
     <div className="c-drawer-footer">
-      <TextLink as="button" tone="subtle" onClick={onClear}>Clear all</TextLink>
+      <Button variant="text" onClick={onClear}>Clear all</Button>
       <Button className="c-drawer-footer__show" onClick={onShow}>Show {count} {count === 1 ? 'course' : 'courses'}</Button>
     </div>
   );

@@ -1,6 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { MenuOption } from '../MenuOption/MenuOption';
-import { TextLink } from '../TextLink/TextLink';
 import { Button } from '../Button/Button';
 import { FilterDropdown } from '../FilterDropdown/FilterDropdown';
 import { toggle } from '../FilterBlock/groups';
@@ -30,7 +29,7 @@ export function FilterMenu({ id, legend, options, selected, onToggle, onClear, o
         ))}
       </fieldset>
       <div className="c-menu__footer">
-        <TextLink as="button" tone="subtle" onClick={onClear}>Clear</TextLink>
+        <Button variant="text" size="medium" onClick={onClear}>Clear</Button>
         <Button size="medium" onClick={onApply}>Apply</Button>
       </div>
     </div>
@@ -50,7 +49,8 @@ export interface FilterSelectProps {
  * - Opening copies the applied values into a draft; checking only changes the draft.
  * - Apply commits the draft and closes. Clear commits nothing applied and closes.
  * - Esc, clicking outside, tabbing away, or clicking the trigger again closes and discards the draft.
- * - Focus goes to the first option on open and back to the trigger on Esc / Apply / Clear.
+ * - Opened from the keyboard, focus goes to the first option (no stray ring for mouse users);
+ *   focus returns to the trigger on Esc / Apply / Clear.
  */
 export function FilterSelect({ label, options, applied, onApply }: FilterSelectProps) {
   const [open, setOpen] = useState(false);
@@ -58,13 +58,14 @@ export function FilterSelect({ label, options, applied, onApply }: FilterSelectP
   const wrap = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const menuId = useId();
+  const viaKeyboard = useRef(false);
 
-  const openMenu = () => { setDraft(applied); setOpen(true); };
+  const openMenu = (keyboard: boolean) => { viaKeyboard.current = keyboard; setDraft(applied); setOpen(true); };
   const close = (returnFocus = false) => { setOpen(false); if (returnFocus) trigger.current?.focus(); };
 
   useEffect(() => {
     if (!open) return;
-    wrap.current?.querySelector<HTMLInputElement>('.c-menu input')?.focus();
+    if (viaKeyboard.current) wrap.current?.querySelector<HTMLInputElement>('.c-menu input')?.focus();
     const onPointer = (e: PointerEvent) => { if (!wrap.current?.contains(e.target as Node)) setOpen(false); };
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.preventDefault(); setOpen(false); trigger.current?.focus(); } };
     const onFocusOut = (e: FocusEvent) => { const to = e.relatedTarget as Node | null; if (to && !wrap.current?.contains(to)) setOpen(false); };
@@ -78,7 +79,7 @@ export function FilterSelect({ label, options, applied, onApply }: FilterSelectP
   return (
     <div ref={wrap} className="c-filter-select">
       <FilterDropdown ref={trigger} label={label} count={applied.length} open={open} aria-controls={open ? menuId : undefined}
-        onClick={() => (open ? close() : openMenu())} />
+        onClick={(e) => (open ? close() : openMenu(e.detail === 0 /* Enter/Space */))} />
       {open && (
         <FilterMenu id={menuId} legend={label} options={options} selected={draft} className="c-filter-select__menu"
           onToggle={(v) => setDraft((d) => toggle(d, v))}

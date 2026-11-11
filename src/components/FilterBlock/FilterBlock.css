@@ -1,7 +1,8 @@
 .c-filter-block { display: flex; flex-direction: column; gap: var(--space-4); }
 .c-filter-block__bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
 .c-filter-block__count {
-  margin: 0 0 0 auto; color: var(--color-text-secondary);
+  /* Sits right after the dropdowns (24px from the last one) as the result of the controls. */
+  margin: 0 0 0 var(--space-3); color: var(--color-text-secondary);
   font-family: var(--font-sans); font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
 }
 .c-filter-block__bar--narrow { display: none; }
@@ -13,4 +14,5 @@
   .c-filter-block { gap: var(--space-3); }
   .c-filter-block__bar--wide { display: none; }
   .c-filter-block__bar--narrow { display: flex; flex-wrap: nowrap; justify-content: space-between; }
+  .c-filter-block__bar--narrow .c-filter-block__count { margin: 0; }
 }

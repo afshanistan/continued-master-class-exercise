@@ -33,3 +33,18 @@ export const FullWidth: Story = { args: { fullWidth: true, children: 'View cours
 
 /** Navigating actions (Join now, View course) render a real link with the same look. */
 export const AsLink: Story = { args: { href: '#', children: 'View course' } };
+
+/** Tertiary text button, shown with its primary partner (Filter Menu footer). */
+export const TextVariant: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16 }}>
+      {(['default', 'hover', 'pressed', 'focus'] as const).map((st) => (
+        <div key={st} style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+          <span className="text-label" style={{ width: 64 }}>{st}</span>
+          <Button variant="text" size="medium" data-state={st === 'default' ? undefined : st}>Clear</Button>
+          <Button size="medium">Apply</Button>
+        </div>
+      ))}
+    </div>
+  ),
+};
