@@ -82,6 +82,7 @@
 
   /* Color (semantic) */
   --color-surface-inverse: var(--color-teal-900);
+  --color-surface-inverse-deep: var(--color-teal-950); /* site chrome (nav, footer): one step darker than the hero */
   --color-text-on-inverse-muted: var(--color-teal-200);
   --color-border-on-inverse: rgb(255 255 255 / 0.12);
   --color-text-on-inverse: var(--color-teal-50);
