@@ -1,0 +1,68 @@
+/* Exploration only: Join now (dark-surface button) hover/press options A–E. No press scale. */
+.x-join .c-button--dark { position: relative; isolation: isolate; overflow: hidden; }
+.x-join .c-button--dark:active, .x-join .c-button--dark[data-state='pressed'] { transform: none; }
+.x-join .c-button--dark {
+  transition: background-color var(--duration-color-out) var(--ease-color), box-shadow var(--duration-color-out) var(--ease-color),
+              transform var(--duration-retract) var(--ease-out);
+}
+.x-join .c-button--dark:hover, .x-join .c-button--dark[data-state='hover'] { transition-duration: var(--duration-color-in), var(--duration-color-in), var(--duration-move); }
+.x-join .c-button--dark:active, .x-join .c-button--dark[data-state='pressed'] { transition-duration: var(--duration-color-press); }
+
+/* Glow needs room: don't clip the halo */
+.x-join--a .c-button--dark, .x-join--b .c-button--dark, .x-join--c .c-button--dark { overflow: visible; }
+
+/* A · Glow: color holds at 300, halo blooms; press = halo tightens, color lighter (200) */
+.x-join--a .c-button--dark:hover, .x-join--a .c-button--dark[data-state='hover'],
+.x-join--c .c-button--dark:hover, .x-join--c .c-button--dark[data-state='hover'] {
+  background: var(--color-magenta-300);
+  box-shadow: 0 0 0 1px rgb(255 148 189 / 0.35), 0 0 22px 3px rgb(255 148 189 / 0.45);
+}
+.x-join--a .c-button--dark:active, .x-join--a .c-button--dark[data-state='pressed'],
+.x-join--c .c-button--dark:active, .x-join--c .c-button--dark[data-state='pressed'] {
+  background: var(--color-magenta-200);
+  box-shadow: 0 0 0 1px rgb(255 148 189 / 0.5), 0 0 8px 0 rgb(255 148 189 / 0.5);
+}
+
+/* B · Neon: richer core (400) + halo; press = deeper (500), halo tightens */
+.x-join--b .c-button--dark:hover, .x-join--b .c-button--dark[data-state='hover'] {
+  background: var(--color-magenta-400);
+  box-shadow: 0 0 0 1px rgb(242 120 176 / 0.4), 0 0 22px 3px rgb(242 120 176 / 0.5);
+}
+.x-join--b .c-button--dark:active, .x-join--b .c-button--dark[data-state='pressed'] {
+  background: var(--color-magenta-500);
+  box-shadow: 0 0 0 1px rgb(223 85 146 / 0.5), 0 0 8px 0 rgb(223 85 146 / 0.55);
+}
+
+/* C · Glow + arrow (arrow visible at rest; nudges right on hover) */
+.x-join--c .c-button--dark { gap: var(--space-2); }
+.x-arrow { flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .x-arrow { transition: transform var(--duration-retract) var(--ease-out); }
+  .x-join--c .c-button--dark:hover .x-arrow, .x-join--c .c-button--dark[data-state='hover'] .x-arrow { transform: translateX(4px); transition-duration: var(--duration-move); }
+}
+
+/* D · Lift: rises 2px on a deep shadow; press lands (no lift, no shadow), color lighter (200) */
+.x-join--d .c-button--dark { overflow: visible; }
+.x-join--d .c-button--dark:hover, .x-join--d .c-button--dark[data-state='hover'] {
+  background: var(--color-magenta-300);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.3), 0 10px 22px -6px rgb(0 0 0 / 0.6);
+}
+.x-join--d .c-button--dark:active, .x-join--d .c-button--dark[data-state='pressed'] { background: var(--color-magenta-200); box-shadow: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .x-join--d .c-button--dark:hover, .x-join--d .c-button--dark[data-state='hover'] { transform: translateY(-2px); }
+  .x-join--d .c-button--dark:active, .x-join--d .c-button--dark[data-state='pressed'] { transform: translateY(0); }
+}
+
+/* E · Wipe fill: lighter magenta (200) fills left → right like the link underline; press = 100 */
+.x-join--e .c-button--dark:hover, .x-join--e .c-button--dark[data-state='hover'] { background: var(--color-magenta-300); }
+.x-join--e .c-button--dark::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: var(--color-magenta-200); transform: scaleX(0); transform-origin: left center;
+}
+.x-join--e .c-button--dark:hover::before, .x-join--e .c-button--dark[data-state='hover']::before,
+.x-join--e .c-button--dark:active::before, .x-join--e .c-button--dark[data-state='pressed']::before { transform: scaleX(1); }
+.x-join--e .c-button--dark:active::before, .x-join--e .c-button--dark[data-state='pressed']::before { background: var(--color-magenta-100); }
+@media (prefers-reduced-motion: no-preference) {
+  .x-join--e .c-button--dark::before { transition: transform var(--duration-retract) var(--ease-out), background-color var(--duration-color-press) var(--ease-color); }
+  .x-join--e .c-button--dark:hover::before { transition-duration: var(--duration-move), var(--duration-color-press); }
+}
