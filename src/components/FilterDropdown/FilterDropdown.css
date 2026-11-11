@@ -1,9 +1,10 @@
-/* Shared by Filter Dropdown and Filters Button (same control family). */
+/* Shared by Filter Dropdown and Filters Button (same control family).
+   Shape rule: rounded rectangle = something you open; round pill = a value you've chosen. */
 .c-dropdown {
   display: inline-flex; align-items: center; gap: var(--space-2);
-  min-height: var(--size-touch-target);
+  min-height: var(--size-control-md); /* 40: desktop/tablet; mobile Filters button stays 44 */
   padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
-  border: 0; border-radius: var(--radius-full);
+  border: 0; border-radius: var(--radius-md);
   background: var(--color-control-bg); color: var(--color-control-text);
   box-shadow: inset 0 0 0 1px var(--color-control-border);
   font-family: var(--font-sans); font-size: var(--body-font-size); line-height: var(--body-line-height); letter-spacing: var(--body-letter-spacing);
@@ -13,13 +14,13 @@
 .c-dropdown__chevron { flex: none; }
 
 /* Not applied */
-.c-dropdown:hover, .c-dropdown[data-state='hover'] { box-shadow: inset 0 0 0 1px var(--color-control-border-interactive); color: var(--color-control-active); transition-duration: var(--duration-fast); }
+.c-dropdown:hover, .c-dropdown[data-state='hover'] { background: var(--color-selection-bg-subtle); box-shadow: inset 0 0 0 1px var(--color-control-border-interactive); color: var(--color-control-active); transition-duration: var(--duration-fast); }
 .c-dropdown[aria-expanded='true'] { box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); }
 .c-dropdown:active, .c-dropdown[data-state='pressed'] { background: var(--color-selection-bg); box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); transition-duration: var(--duration-press); }
 
 /* Applied: magenta at rest, deeper on hover / pressed / open */
 .c-dropdown[data-applied] { box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); }
-.c-dropdown[data-applied]:hover, .c-dropdown[data-applied][data-state='hover'],
+.c-dropdown[data-applied]:hover, .c-dropdown[data-applied][data-state='hover'] { background: var(--color-selection-bg-subtle); box-shadow: inset 0 0 0 1px var(--color-control-active-strong); color: var(--color-control-active-strong); }
 .c-dropdown[data-applied][aria-expanded='true'] { box-shadow: inset 0 0 0 1px var(--color-control-active-strong); color: var(--color-control-active-strong); }
 .c-dropdown[data-applied]:active, .c-dropdown[data-applied][data-state='pressed'] { background: var(--color-selection-bg); box-shadow: inset 0 0 0 1px var(--color-control-active-strong); color: var(--color-control-active-strong); }
 

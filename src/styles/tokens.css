@@ -131,6 +131,7 @@
   --color-badge-new-text: var(--color-gold-900);
   --color-image-desaturate: var(--color-neutral-500);
   --color-icon-secondary: var(--color-neutral-600);
+  --color-selection-bg-subtle: var(--color-magenta-50); /* hover tint on controls (dropdowns, Filters button, chips) */
   --color-selection-bg: var(--color-magenta-100);
   --color-selection-bg-hover: var(--color-magenta-200);
   --color-selection-border: var(--color-magenta-200);

@@ -11,12 +11,12 @@
   cursor: pointer;
   transition: background-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
 }
-/* 34px visual → 44px tap target */
-.c-filter-pill::after { content: ''; position: absolute; inset: -5px 0; }
+/* 30px visual → 44px tap target */
+.c-filter-pill::after { content: ''; position: absolute; inset: -7px 0; }
 .c-filter-pill__label { max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .c-filter-pill__close {
   display: grid; place-items: center; flex: none;
-  width: 20px; height: 20px; border-radius: var(--radius-full);
+  width: 18px; height: 18px; border-radius: var(--radius-full);
   background: var(--color-selection-bg); color: var(--color-selection-control-icon);
   transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }

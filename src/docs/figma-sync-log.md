@@ -33,6 +33,13 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 14 | 📝 | Filter Dropdown | Annotation: disclosure pattern (`aria-expanded`, `aria-controls`), **no `aria-haspopup`** | It's a checkbox group, not an ARIA menu |
 | 15 | 📝 | Course Card | Annotation: link name = visible short title + hidden full title (WCAG 2.5.3), replaces the full-title aria-label plan | Voice-control users say what they see |
 | 16 | 📝 | Count Badge | Annotation: reads "2 applied" to screen readers | Visible number + hidden suffix |
+| 24 | ⬜ | Course Card + New Tag | **New moves onto the photo:** top-left, inset 12, Elevation/1 shadow; removed from the tag row (topic pill stays alone). **`badge/new-bg` → gold 400** (was gold 200); text stays gold 900. Exploration: Storybook → Explorations → New pill on photo (option D) | Nov 10: New read like a category next to the topic pill; pale gold blended into tinted photos. Demo note: no Language (tan) course is New |
+| 25 | ⬜ | Filter Dropdown (all variants) | **Shape:** radius full → **`radius/md` (8)**. **Height:** min 44 → **40** (`size/control-md`). **Hover:** add fill **magenta 50** (new token `color/selection/bg-subtle`); Applied hover also gets the tint. Pressed stays magenta 100 | Nov 10 (ref: Dribbble filter bar): rounded rectangle = something you open; round pill = a value you chose. Hover builds color: white → tint → fill |
+| 26 | ⬜ | Filters Button | **Shape → `radius/md` (8)**; stays **44** tall (mobile, thumbs). Hover gets the magenta 50 tint | Same control family as Filter Dropdown |
+| 27 | ⬜ | Toggle Chip (Unselected, Hover) | Add fill **magenta 50** (`selection/bg-subtle`) on hover. Shape stays round (it's a selection) | Consistent hover across the filter controls |
+| 28 | ⬜ | Filter Pill | Height 34 → **30**: close circle 20 → **18**, padding stays 6 / 6 / 6 / 12. Annotation: invisible tap area still reaches 44 | Pills sit a level below the dropdowns |
+| 29 | ⬜ | Filter By | Label **Label/Strong 14 → Body 16, weight 600**; icon 16 → **20** | Was too small next to the dropdowns |
+| 30 | ⬜ | Variables | Add **`color/selection/bg-subtle` = magenta 50** | New semantic token for control hover |
 | 23 | ⬜ | Meta Item | Icon color `neutral/900` → **`text/secondary`** (same gray as the value); icon-to-text gap 8 → **4** (`space/1`). Icons stay **outline** | Nov 10: icons were louder than their numbers; outline = functional, filled = brand/celebration |
 
 ## Patterns, layout, and prototype flows
