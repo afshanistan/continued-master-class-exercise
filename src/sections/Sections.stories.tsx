@@ -35,4 +35,24 @@ export const HeroAppear: StoryObj<{ speed: string }> = {
 export const CatalogSection: Story = { name: 'Catalog', render: () => <Catalog /> };
 export const CatalogEmpty: Story = { name: 'Catalog · no results', render: () => <Catalog initialFilters={{ topic: ['dementia'], credit: ['5'], taughtWith: [] }} /> };
 export const JoinSection: Story = { name: 'Join', render: () => <Join /> };
+
+/** Join appear-on-scroll (plays when visible; here it's visible on load). Replay reruns it; Speed slows it. */
+export const JoinAppear: StoryObj<{ speed: string }> = {
+  name: 'Join · appear',
+  args: { speed: '1x' },
+  argTypes: { speed: { control: 'inline-radio', options: ['1x', '0.5x', '0.25x'] } },
+  render: function Render({ speed }) {
+    const [run, setRun] = useState(0);
+    const mult = { '1x': 1, '0.5x': 2, '0.25x': 4 }[speed] ?? 1;
+    return (
+      <div style={{ '--appear-speed': mult } as CSSProperties}>
+        <div style={{ position: 'fixed', top: 12, right: 12, zIndex: 50, display: 'flex', gap: 8, alignItems: 'center' }}>
+          <span className="text-label">{speed}</span>
+          <button type="button" onClick={() => setRun((r) => r + 1)} style={{ padding: '6px 12px', borderRadius: 8, border: '1px solid var(--color-border-subtle)', background: '#fff', cursor: 'pointer', font: 'inherit' }}>↻ Replay</button>
+        </div>
+        <div style={{ paddingTop: 64 }}><Join key={run} /></div>
+      </div>
+    );
+  },
+};
 export const FooterBar: Story = { name: 'Footer', render: () => <Footer /> };
