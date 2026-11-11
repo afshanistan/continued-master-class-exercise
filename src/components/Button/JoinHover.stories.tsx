@@ -11,10 +11,12 @@ const OPTIONS = [
   { k: 'b', name: 'B · Neon', note: 'Richer core (400) + halo. Press: deeper (500), halo tightens.' },
   { k: 'c', name: 'C · Glow + arrow', note: 'A, plus an arrow (visible at rest) that nudges right on hover.' },
   { k: 'd', name: 'D · Lift', note: 'Rises 2px on a deep shadow (lift and land, like the light buttons). Press lands, lighter.' },
-  { k: 'e', name: 'E · Wipe fill', note: 'Lighter magenta fills left → right, like the link underline. Press: lighter still.' },
+  { k: 'e', name: 'E · Wipe, lighter (soft)', note: 'Lighter magenta (200) fills left → right, softer timing (380ms in / 250 out). Press: lighter still (100).' },
+  { k: 'f', name: 'F · Wipe, deeper + arrow', note: 'Richer magenta (400) fills left → right; the arrow nudges as the fill lands. Press: holds 400, pressed-in shadow.' },
+  { k: 'g', name: 'G · Wipe, deeper', note: 'F without the arrow.' },
 ] as const;
 
-const Label = ({ k }: { k: string }) => (k === 'c' ? <>Join now<ArrowRight className="x-arrow" size={18} strokeWidth={2.25} aria-hidden="true" /></> : <>Join now</>);
+const Label = ({ k }: { k: string }) => (k === 'c' || k === 'f' ? <>Join now<ArrowRight className="x-arrow" size={18} strokeWidth={2.25} aria-hidden="true" /></> : <>Join now</>);
 const muted = { color: 'var(--color-text-on-inverse-muted)' } as const;
 
 /** Hover and press the "Live" button in each row. The three columns on the right are forced states for comparison. */
