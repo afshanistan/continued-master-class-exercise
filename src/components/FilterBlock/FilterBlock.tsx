@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { Filters } from '../../data/courses';
-import { courses, EMPTY_FILTERS } from '../../data/courses';
+import { courses, EMPTY_FILTERS, matches } from '../../data/courses';
 import { FilterBy } from '../FilterBy/FilterBy';
 import { FilterSelect } from '../FilterMenu/FilterMenu';
 import { FiltersButton } from '../FiltersButton/FiltersButton';
@@ -101,6 +101,7 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
         <FilterBy count={applied} />
         {GROUPS.map((g) => (
           <FilterSelect key={g.key} label={g.label} options={OPTIONS[g.key]} applied={filters[g.key]}
+            countFor={(v) => courses.filter((c) => matches(c, setGroup(filters, g.key, v))).length}
             onApply={(v) => commit(setGroup(filters, g.key, v))} />
         ))}
       </div>

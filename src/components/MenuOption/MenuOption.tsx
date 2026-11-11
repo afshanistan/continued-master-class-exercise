@@ -4,7 +4,8 @@ import './MenuOption.css';
 
 export interface MenuOptionProps {
   label: string;
-  count: number;
+  /** Optional. The filter menus don't show it (a fixed per-tag total contradicts the live result count). */
+  count?: number;
   checked: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
   name?: string;
@@ -18,7 +19,7 @@ export function MenuOption({ label, count, checked, onChange, name, value, 'data
     <label className="c-menu-option" data-state={forced}>
       <Checkbox checked={checked} onChange={onChange} name={name} value={value} />
       <span className="c-menu-option__label">{label}</span>
-      <span className="c-menu-option__count">{count}<span className="visually-hidden"> courses</span></span>
+      {count !== undefined && <span className="c-menu-option__count">{count}<span className="visually-hidden"> courses</span></span>}
     </label>
   );
 }
