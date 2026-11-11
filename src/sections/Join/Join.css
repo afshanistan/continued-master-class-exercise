@@ -1,6 +1,8 @@
 .s-join { padding: 0 var(--layout-margin); background: var(--color-surface-page); }
 .s-join__content {
-  max-width: var(--layout-max-width); margin: 0 auto; padding: var(--space-section-y) 0;
+  /* No top padding: Join follows the Catalog on the same background, whose bottom padding already
+     gives one section gap. Doubling it read as a hole (192 vs 96). */
+  max-width: var(--layout-max-width); margin: 0 auto; padding: 0 0 var(--space-section-y);
   display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
   gap: var(--space-stack-gap) var(--space-24);
 }
