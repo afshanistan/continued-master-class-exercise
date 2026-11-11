@@ -19,11 +19,14 @@ export function CourseCard({ course: c, headingLevel = 3 }: { course: Course; he
   const longer = c.fullTitle !== c.title;
   return (
     <article className="c-course-card">
-      <CourseImage src={c.image} topic={c.topic} />
+      <div className="c-course-card__media">
+        {/* New sits on the photo, apart from the topic pill, so it reads as status, not category. */}
+        {c.isNew && <NewTag />}
+        <CourseImage src={c.image} topic={c.topic} />
+      </div>
       <div className="c-course-card__content">
         <div className="c-course-card__tags">
           <TopicPill topic={c.topic} />
-          {c.isNew && <NewTag />}
         </div>
         <div className="c-course-card__heading">
           <H className="c-course-card__title">

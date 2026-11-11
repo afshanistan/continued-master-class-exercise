@@ -33,6 +33,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 14 | 📝 | Filter Dropdown | Annotation: disclosure pattern (`aria-expanded`, `aria-controls`), **no `aria-haspopup`** | It's a checkbox group, not an ARIA menu |
 | 15 | 📝 | Course Card | Annotation: link name = visible short title + hidden full title (WCAG 2.5.3), replaces the full-title aria-label plan | Voice-control users say what they see |
 | 16 | 📝 | Count Badge | Annotation: reads "2 applied" to screen readers | Visible number + hidden suffix |
+| 23 | ⬜ | Meta Item | Icon color `neutral/900` → **`text/secondary`** (same gray as the value); icon-to-text gap 8 → **4** (`space/1`). Icons stay **outline** | Nov 10: icons were louder than their numbers; outline = functional, filled = brand/celebration |
 
 ## Patterns, layout, and prototype flows
 

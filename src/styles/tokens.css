@@ -127,7 +127,7 @@
   --color-topic-dementia-pill-bg: var(--color-plum-100);
   --color-topic-dementia-pill-text: var(--color-plum-800);
   --color-surface-card: var(--color-base-white);
-  --color-badge-new-bg: var(--color-gold-200);
+  --color-badge-new-bg: var(--color-gold-400); /* was gold-200; stronger so it holds on tinted photos */
   --color-badge-new-text: var(--color-gold-900);
   --color-image-desaturate: var(--color-neutral-500);
   --color-icon-secondary: var(--color-neutral-600);
