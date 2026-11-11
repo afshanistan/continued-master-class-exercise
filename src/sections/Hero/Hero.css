@@ -34,3 +34,23 @@
   .s-hero__stat + .s-hero__stat { border-left: 0; }
   .s-hero__stat .c-stat { align-items: baseline; }
 }
+
+/* ── Appear on load (Nov 10). Grammar: text rises, frames are set down (fall).
+   Big things move first, farthest, longest; supporting items shorter and quieter.
+   Each element sets: name (rise/fall), distance, duration, delay. Reduced motion: none. */
+@keyframes appear-rise { from { opacity: 0; transform: translateY(var(--appear-y)); } }
+@keyframes appear-fall { from { opacity: 0; transform: translateY(calc(var(--appear-y) * -1)); } }
+@media (prefers-reduced-motion: no-preference) {
+  .s-hero__tile, .s-hero__icon, .s-hero__eyebrow, .s-hero__headline, .s-hero__definition, .s-hero__stat, .s-hero__offer {
+    animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay) * var(--appear-speed)) both;
+  }
+  .s-hero__tile       { --appear-name: appear-fall; --appear-y: 16px; --appear-dur: 450ms; --appear-delay: 100ms; }
+  .s-hero__icon       { --appear-name: appear-fall; --appear-y: 24px; --appear-dur: 450ms; --appear-delay: 180ms; } /* lands into the tile a beat later */
+  .s-hero__eyebrow    { --appear-name: appear-rise; --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 160ms; }
+  .s-hero__headline   { --appear-name: appear-rise; --appear-y: 20px; --appear-dur: 450ms; --appear-delay: 200ms; }
+  .s-hero__definition { --appear-name: appear-rise; --appear-y: 16px; --appear-dur: 350ms; --appear-delay: 300ms; }
+  .s-hero__stat:nth-child(1) { --appear-name: appear-rise; --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 400ms; }
+  .s-hero__stat:nth-child(2) { --appear-name: appear-rise; --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 470ms; }
+  .s-hero__stat:nth-child(3) { --appear-name: appear-rise; --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 540ms; }
+  .s-hero__offer      { --appear-name: appear-fall; --appear-y: 16px; --appear-dur: 450ms; --appear-delay: 650ms; }
+}

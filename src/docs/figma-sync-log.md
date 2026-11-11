@@ -49,6 +49,10 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 37 | ⬜ | Membership Card → Action Group | **Layout = Inline** (Join now + "Already a member? Log in" side by side, left-aligned) on desktop and tablet, matching the hero Offer Card. Mobile stays **Stacked** (full-width button) | Nov 10: consistency with the hero; card is left-aligned |
 | 38 | ⬜ | Section / Join | **Top padding → 0** (keep bottom `space/section-y`). Catalog's bottom padding already provides the gap; together they doubled to 192. Every section boundary is now one `section-y` (96 / 64 / 48) | Nov 10: cards → Join gap matched to hero → Browse |
 | 39 | ⬜ | Section / Navigation + Section / Footer + Variables | Background **teal 900 → teal 950**. New token **`color/surface/inverse-deep` = teal 950** (site chrome). Hero stays `surface/inverse` (teal 900) | Nov 10: nav and footer read as chrome, separate from the hero |
+| 40 | ⬜ | Variables (Layout, Mobile mode) | `layout/hero-width`, `layout/hero-stats-width`, `layout/join-card-width`, `layout/join-case-min-width`, `layout/join-case-max-width` → **Fill** (code: 100%) instead of 358. In mobile frames, set those layers to Fill container | R1: fixed 358 left a narrow column at 430–767 |
+| 41 | 📝 | Offer Card | Annotation: layout follows **the card's own width** (container query): Three zones ≥1000, Two column 520–999, Stacked <520; not the screen breakpoints | R1 |
+| 42 | 📝 | Membership Card → Action Group | Annotation: Inline whenever the card's content width is ≥400 (container query); Stacked below (phones) | R1 |
+| 43 | ⬜ | Section / Join (Desktop) | Desktop is a **2-column grid** that never wraps: case `minmax(0, 608)` + card `minmax(0, 640)`, space-between, gap min 64 (96 at 1440). Add a 1200-wide frame to show both columns shrinking (~525 each) | R3: flexbox used to wrap below ~1312 |
 | 23 | ⬜ | Meta Item | Icon color `neutral/900` → **`text/secondary`** (same gray as the value); icon-to-text gap 8 → **4** (`space/1`). Icons stay **outline** | Nov 10: icons were louder than their numbers; outline = functional, filled = brand/celebration |
 
 ## Patterns, layout, and prototype flows

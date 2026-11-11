@@ -386,5 +386,8 @@
   --duration-move: 220ms;   /* underline wipe, checkbox draw, menu slide */
   --duration-retract: 180ms;/* reverse of a move (hover out) */
   --duration-sheet-in: 280ms;
+  /* Appear (on load). Curve from willnorris.design (Framer tween): a soft ease-out. */
+  --ease-appear: cubic-bezier(0.12, 0.23, 0.5, 1);
+  --appear-speed: 1; /* multiplier for every appear duration and delay (Storybook: 0.5x / 0.25x = 2 / 4) */
   --duration-sheet-out: 220ms;
 }
