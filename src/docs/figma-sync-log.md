@@ -53,6 +53,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 41 | 📝 | Offer Card | Annotation: layout follows **the card's own width** (container query): Three zones ≥1000, Two column 520–999, Stacked <520; not the screen breakpoints | R1 |
 | 42 | 📝 | Membership Card → Action Group | Annotation: Inline whenever the card's content width is ≥400 (container query); Stacked below (phones) | R1 |
 | 43 | ⬜ | Section / Join (Desktop) | Desktop is a **2-column grid** that never wraps: case `minmax(0, 608)` + card `minmax(0, 640)`, space-between, gap min 64 (96 at 1440). Add a 1200-wide frame to show both columns shrinking (~525 each) | R3: flexbox used to wrap below ~1312 |
+| 44 | 📝 | Section / Hero (prototype) | Optional: mirror the on-load appear in the Figma prototype with Smart Animate / After Delay: tile + offer card **fall** 16, text **rises** (12–20), stagger 100 → 650ms, `ease-appear` ≈ custom bezier 0.12, 0.23, 0.5, 1. Full table in Design-in-Code → Hero | Code-only motion |
 | 23 | ⬜ | Meta Item | Icon color `neutral/900` → **`text/secondary`** (same gray as the value); icon-to-text gap 8 → **4** (`space/1`). Icons stay **outline** | Nov 10: icons were louder than their numbers; outline = functional, filled = brand/celebration |
 
 ## Patterns, layout, and prototype flows
