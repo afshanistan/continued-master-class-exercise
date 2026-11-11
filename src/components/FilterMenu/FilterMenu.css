@@ -11,6 +11,9 @@
 .c-filter-select__menu { position: absolute; top: calc(100% + var(--space-2)); left: 0; z-index: 20; animation: c-menu-fade var(--duration-fast) var(--ease-out); }
 @keyframes c-menu-fade { from { opacity: 0; } }
 @keyframes c-menu-in { from { opacity: 0; transform: translateY(-4px); } }
+@keyframes c-menu-out { to { opacity: 0; } }
+/* M3: close = quick 100ms fade, no movement (exits are faster than entrances). */
+.c-filter-select__menu.is-closing { animation: c-menu-out 100ms var(--ease-color) forwards; pointer-events: none; }
 @media (prefers-reduced-motion: no-preference) {
   .c-filter-select__menu { animation-name: c-menu-in; }
 }

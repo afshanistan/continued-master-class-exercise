@@ -6,7 +6,7 @@
 }
 .c-filter-block__count strong { color: var(--color-text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
 .c-filter-block__bar--narrow { display: none; }
-.c-filter-block__active { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+.c-filter-block__active { position: relative; /* pill ghosts */ display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
 .c-filter-block__pills { display: contents; list-style: none; }
 .c-filter-block__pills li { display: flex; }
 

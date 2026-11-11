@@ -57,3 +57,9 @@ a, button, label, input { -webkit-tap-highlight-color: transparent; }
   0% { opacity: 0; transform: translateY(calc(var(--appear-y) * -1)) scale(var(--appear-scale)); }
   40% { opacity: 1; }
 }
+
+/* M2: printing shows everything, including content that hasn't appeared yet. */
+@media print {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-appear-ready] * { opacity: 1 !important; }
+}

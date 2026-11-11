@@ -36,7 +36,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .s-join[data-appear-ready] :is(.s-join__heading, .s-join__body, .c-review, .c-membership):not(.is-in) { opacity: 0; }
   .s-join[data-appear-ready] .is-in {
-    animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay, 0ms) * var(--appear-speed)) both;
+    animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay, 0ms) * var(--appear-speed)) backwards;
   }
   .s-join__heading      { --appear-name: appear-rise;  --appear-y: 15px; --appear-dur: 450ms; --appear-delay: 140ms; }
   .s-join__body         { --appear-name: appear-rise;  --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 240ms; }

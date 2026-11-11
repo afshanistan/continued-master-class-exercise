@@ -2,6 +2,7 @@
 .s-catalog__content { max-width: var(--layout-max-width); margin: 0 auto; padding: var(--space-section-y) 0; display: flex; flex-direction: column; gap: var(--space-8); }
 .s-catalog__heading { margin: 0; color: var(--color-text-primary); }
 .s-catalog__grid {
+  position: relative; /* leaving-card ghosts are positioned against the grid */
   margin: 0; padding: 0; list-style: none; display: grid; gap: var(--layout-gutter);
   /* As many ≥300px columns as fit: 4 at full desktop (~318 each), 3 from ~1200, 2 on tablet, 1 on phone.
      auto-fill keeps the track count when filtering, so 2 results don't stretch into giant cards. */
@@ -16,3 +17,17 @@
 }
 .s-catalog__empty p { margin: 0; }
 .s-catalog__empty .text-body { color: var(--color-text-secondary); margin-bottom: var(--space-3); }
+
+/* Empty grid (all cards filtered out): no height, so the empty state sits right under the count. */
+.s-catalog__grid:empty, .s-catalog__grid:not(:has(> li:not([data-flip-ghost]))) { margin-bottom: calc(-1 * var(--space-8)); }
+
+/* ── Motion (Nov 10) ─────────────────────────────────────────────────────────────────────────
+   M8 Empty state presses on (a frame) when it replaces the grid. M11 Heading + filter bar rise on scroll
+   (the hero/Join text values; cards don't cascade, so browsing isn't delayed). */
+@media (prefers-reduced-motion: no-preference) {
+  .s-catalog__empty { --appear-y: 4px; --appear-scale: 1.01; animation: appear-press calc(250ms * var(--appear-speed)) var(--ease-appear) backwards; }
+  .s-catalog[data-appear-ready] :is(.s-catalog__heading, .c-filter-block):not(.is-in) { opacity: 0; }
+  .s-catalog[data-appear-ready] .is-in { animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay, 0ms) * var(--appear-speed)) backwards; }
+  .s-catalog__heading { --appear-name: appear-rise; --appear-y: 15px; --appear-dur: 450ms; --appear-delay: 140ms; }
+  .s-catalog .c-filter-block { --appear-name: appear-rise; --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 240ms; }
+}

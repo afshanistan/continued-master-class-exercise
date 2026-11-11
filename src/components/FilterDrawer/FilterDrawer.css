@@ -9,7 +9,7 @@
 .c-drawer::backdrop { background: var(--overlay-scrim); }
 .c-drawer__body { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-6); padding: var(--space-4) var(--space-4) var(--space-6); }
 
-/* Open: slide up with the scrim fading in. Reduced motion: fade only. (Close animation: Phase 6.) */
+/* Open: slide up with the scrim fading in. Reduced motion: fade only. (Close: animated in FilterDrawer.tsx.) */
 .c-drawer[open] { animation: c-fade-in var(--duration-sheet-in) var(--ease-out); }
 .c-drawer[open]::backdrop { animation: c-fade-in var(--duration-sheet-in) var(--ease-out); }
 @keyframes c-fade-in { from { opacity: 0; } }
@@ -17,3 +17,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .c-drawer[open] { animation-name: c-sheet-up; }
 }
+
+/* Swipe to dismiss: the header is the grab area. */
+.c-drawer__grab { touch-action: none; cursor: grab; }
+.c-drawer__grab:active { cursor: grabbing; }

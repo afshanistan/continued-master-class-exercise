@@ -7,3 +7,8 @@
 .c-course-image--language { --tint: var(--color-topic-language-tint); }
 .c-course-image--early-intervention { --tint: var(--color-topic-early-intervention-tint); }
 .c-course-image--dementia { --tint: var(--color-topic-dementia-tint); }
+
+/* M10: photos fade in when loaded (opacity only, so it's fine under reduced motion too). */
+.c-course-image img { opacity: 0; transition: opacity 250ms var(--ease-color); }
+.c-course-image.is-loaded img { opacity: 1; }
+@media print { .c-course-image img { opacity: 1; } }

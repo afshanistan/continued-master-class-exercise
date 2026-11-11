@@ -33,3 +33,6 @@
 @media (prefers-reduced-motion: no-preference) {
   .c-dropdown__chevron { transition: transform var(--duration-fast) var(--ease-out); }
 }
+
+/* M6: the "· N" count fades/scales in when the group first becomes applied. */
+@media (prefers-reduced-motion: no-preference) { .c-dropdown__count { display: inline-block; animation: c-badge-in 150ms var(--ease-out) backwards; } }

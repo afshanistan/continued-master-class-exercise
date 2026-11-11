@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { Filters } from '../../data/courses';
 import { courses, EMPTY_FILTERS } from '../../data/courses';
 import { FilterBy } from '../FilterBy/FilterBy';
@@ -8,6 +8,7 @@ import { FilterPill } from '../FilterPill/FilterPill';
 import { TextLink } from '../TextLink/TextLink';
 import { FilterDrawer } from '../FilterDrawer/FilterDrawer';
 import { GROUPS, OPTIONS, LABELS, setGroup, totalApplied } from './groups';
+import { EASE, T, flipPlay, flipSnapshot, heightClose, heightOpen, reducedMotion, type FlipSnapshot } from '../../motion/motion';
 import './FilterBlock.css';
 
 export interface FilterBlockProps {
@@ -30,6 +31,39 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
 
   const pills = GROUPS.flatMap((g) => filters[g.key].map((v) => ({ key: g.key, value: v as string, label: LABELS[g.key][v] })));
   const applied = totalApplied(filters);
+  const pillsKey = pills.map((p) => `${p.key}:${p.value}`).join('|');
+
+  // ── Row state: 'closing' keeps the last pills on screen (inert) while the row collapses.
+  const hasPills = pills.length > 0;
+  const lastPills = useRef(pills);
+  if (hasPills) lastPills.current = pills;
+  const [rowState, setRowState] = useState<'open' | 'closing' | 'closed'>(hasPills ? 'open' : 'closed');
+  if (hasPills && rowState !== 'open') setRowState('open');
+  if (!hasPills && rowState === 'open') setRowState(reducedMotion() ? 'closed' : 'closing');
+  const row = useRef<HTMLDivElement>(null);
+  const prevRow = useRef(rowState);
+  useLayoutEffect(() => {
+    const was = prevRow.current; prevRow.current = rowState;
+    if (was === rowState) return;
+    if (rowState === 'open' && was === 'closed') heightOpen(row.current, T.rowOpen);
+    if (rowState === 'open' && was === 'closing') row.current?.getAnimations().forEach((a) => a.cancel());
+    if (rowState === 'closing') heightClose(row.current, T.rowPillsOut, T.rowClose).then(() => setRowState((r) => (r === 'closing' ? 'closed' : r)));
+  }, [rowState]);
+
+  // ── Pills FLIP: snapshot before any change (every change goes through commit), play after.
+  const pillSnap = useRef<FlipSnapshot | null>(null);
+  const PILL = ':scope > ul > li';
+  const commit = (f: Filters) => { pillSnap.current = flipSnapshot(row.current, PILL); onChange(f); };
+  useLayoutEffect(() => {
+    const before = pillSnap.current; pillSnap.current = null;
+    if (rowState !== 'open') return; // a closing row fades as a whole
+    flipPlay(row.current, PILL, before ?? new Map(), {
+      move: T.pillMove,
+      enter: { keyframes: [{ opacity: 0, transform: `scale(${T.pillEnterScale})` }, { opacity: 1, transform: 'none' }], duration: T.pillEnter, easing: EASE.out },
+      leave: { duration: T.pillLeave, scale: T.pillLeaveScale },
+      ghostParent: row.current?.querySelector('ul') ?? undefined,
+    });
+  }, [pillsKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /** When no pill is left to focus, go to the first visible control: the first dropdown or the Filters button. */
   const fallbackFocus = () => {
@@ -56,10 +90,10 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
 
   const remove = (i: number) => {
     const p = pills[i];
-    onChange(setGroup(filters, p.key, filters[p.key].filter((x) => x !== p.value)));
+    commit(setGroup(filters, p.key, filters[p.key].filter((x) => x !== p.value)));
     setFocusAfter(i);
   };
-  const clearAll = () => { onChange(EMPTY_FILTERS); requestAnimationFrame(fallbackFocus); };
+  const clearAll = () => { commit(EMPTY_FILTERS); requestAnimationFrame(fallbackFocus); };
 
   return (
     <div ref={root} className="c-filter-block">
@@ -67,7 +101,7 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
         <FilterBy count={applied} />
         {GROUPS.map((g) => (
           <FilterSelect key={g.key} label={g.label} options={OPTIONS[g.key]} applied={filters[g.key]}
-            onApply={(v) => onChange(setGroup(filters, g.key, v))} />
+            onApply={(v) => commit(setGroup(filters, g.key, v))} />
         ))}
       </div>
 
@@ -75,12 +109,12 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
         <FiltersButton count={applied} expanded={drawerOpen} onClick={() => setDrawerOpen(true)} />
       </div>
 
-      {pills.length > 0 && (
-        <div className="c-filter-block__active">
+      {rowState !== 'closed' && (
+        <div ref={row} className="c-filter-block__active" inert={rowState === 'closing' || undefined} aria-hidden={rowState === 'closing' || undefined}>
           <ul className="c-filter-block__pills" aria-label="Applied filters">
-            {pills.map((p, i) => (
-              <li key={`${p.key}:${p.value}`}>
-                <FilterPill ref={(el) => { pillRefs.current[i] = el; }} label={p.label} onClick={() => remove(i)} />
+            {(rowState === 'closing' ? lastPills.current : pills).map((p, i) => (
+              <li key={`${p.key}:${p.value}`} data-flip-key={`${p.key}:${p.value}`}>
+                <FilterPill ref={rowState === 'open' ? (el) => { pillRefs.current[i] = el; } : undefined} label={p.label} onClick={() => remove(i)} />
               </li>
             ))}
           </ul>
@@ -93,7 +127,7 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
         Showing <strong>{shown}</strong> of <strong>{total}</strong> {total === 1 ? 'course' : 'courses'}
       </p>
 
-      <FilterDrawer open={drawerOpen} applied={filters} onApply={onChange} onClose={() => setDrawerOpen(false)} />
+      <FilterDrawer open={drawerOpen} applied={filters} onApply={commit} onClose={() => setDrawerOpen(false)} />
     </div>
   );
 }

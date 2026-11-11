@@ -42,7 +42,7 @@
 /* Keyframes appear-rise / appear-press live in styles/base.css (shared with Join). */
 @media (prefers-reduced-motion: no-preference) {
   .s-hero__tile, .s-hero__eyebrow, .s-hero__headline, .s-hero__definition, .s-hero__stat, .s-hero__offer {
-    animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay) * var(--appear-speed)) both;
+    animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay) * var(--appear-speed)) backwards;
   }
   .s-hero__eyebrow    { --appear-name: appear-rise; --appear-y: 9px;  --appear-dur: 350ms; --appear-delay: 100ms; }
   .s-hero__headline   { --appear-name: appear-rise; --appear-y: 15px; --appear-dur: 450ms; --appear-delay: 140ms; }

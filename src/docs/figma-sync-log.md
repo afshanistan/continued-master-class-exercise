@@ -54,7 +54,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 42 | 📝 | Membership Card → Action Group | Annotation: Inline whenever the card's content width is ≥400 (container query); Stacked below (phones) | R1 |
 | 43 | ⬜ | Section / Join (Desktop) | Desktop is a **2-column grid** that never wraps: case `minmax(0, 608)` + card `minmax(0, 640)`, space-between, gap min 64 (96 at 1440). Add a 1200-wide frame to show both columns shrinking (~525 each) | R3: flexbox used to wrap below ~1312 |
 | 44 | 📝 | Section / Hero (prototype) | Optional: mirror the on-load appear in the Figma prototype with Smart Animate / After Delay: text **rises** 9–15 (100–480ms), then tile + offer card **press on** (scale 1.06 / 1.0225 → 1, drop 6) at 560 / 680ms, `ease-appear` ≈ custom bezier 0.12, 0.23, 0.5, 1. Full table in Design-in-Code → Hero | Code-only motion |
-| 45 | 📝 | Section / Join (prototype) | Optional: on-scroll appear, quieter than the hero: text rises 6; Membership + quote cards press on (1.015 → 1, drop 4); 0 / 60 / 100 / 180ms, 350ms each | Code-only motion |
+| 45 | 📝 | Section / Join (prototype) | Optional: on-scroll appear with the hero's settings: headline rises 15 (140ms), body 12 (240ms); Membership Card then quote card press on (1.0225 → 1, drop 6) at 560 / 680ms | Code-only motion |
 | 23 | ⬜ | Meta Item | Icon color `neutral/900` → **`text/secondary`** (same gray as the value); icon-to-text gap 8 → **4** (`space/1`). Icons stay **outline** | Nov 10: icons were louder than their numbers; outline = functional, filled = brand/celebration |
 
 ## Patterns, layout, and prototype flows
