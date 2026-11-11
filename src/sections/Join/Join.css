@@ -21,3 +21,11 @@
   .s-join__lead { align-items: center; text-align: center; }
 }
 @media (max-width: 767.98px) { .s-join__case { gap: var(--space-8); } }
+
+/* R3 Desktop (≥1200): a 2-column grid that never wraps (the flexbox used to wrap below ~1312).
+   Columns shrink together toward 608 / 640 max; gap is 64 minimum, 96 at full width (space-between). */
+@media (min-width: 1200px) {
+  .s-join__content { display: grid; grid-template-columns: minmax(0, 608px) minmax(0, 640px); justify-content: space-between; align-items: stretch; column-gap: var(--space-16); }
+  .s-join__case { min-width: 0; max-width: none; }
+  .s-join .c-membership { max-width: none; }
+}

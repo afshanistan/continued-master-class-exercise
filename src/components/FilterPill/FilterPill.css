@@ -21,8 +21,10 @@
   transition: background-color var(--duration-color-out) var(--ease-color), color var(--duration-color-out) var(--ease-color);
 }
 
-.c-filter-pill:hover, .c-filter-pill[data-state='hover'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); }
-.c-filter-pill:hover .c-filter-pill__close, .c-filter-pill[data-state='hover'] .c-filter-pill__close { background: var(--color-selection-control-bg-hover); color: var(--color-selection-control-icon-hover); }
+.c-filter-pill[data-state='hover'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); }
+@media (hover: hover) { .c-filter-pill:hover { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); } }
+.c-filter-pill[data-state='hover'] .c-filter-pill__close { background: var(--color-selection-control-bg-hover); color: var(--color-selection-control-icon-hover); }
+@media (hover: hover) { .c-filter-pill:hover .c-filter-pill__close { background: var(--color-selection-control-bg-hover); color: var(--color-selection-control-icon-hover); } }
 
 .c-filter-pill:active, .c-filter-pill[data-state='pressed'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); transition-duration: var(--duration-color-press); }
 .c-filter-pill:active .c-filter-pill__close, .c-filter-pill[data-state='pressed'] .c-filter-pill__close { background: var(--color-selection-control-bg-pressed); color: var(--color-selection-control-icon-hover); transition-duration: var(--duration-color-press); }

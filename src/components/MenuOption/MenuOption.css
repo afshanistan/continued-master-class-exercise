@@ -14,5 +14,7 @@
   font-family: var(--font-sans); font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
 }
 /* Row hover stays neutral; magenta is reserved for the checked state. */
-.c-menu-option:hover, .c-menu-option[data-state='hover'] { background: var(--color-control-bg-hover); }
-.c-menu-option:hover .c-menu-option__count, .c-menu-option[data-state='hover'] .c-menu-option__count { color: var(--color-text-secondary-on-subtle); }
+.c-menu-option[data-state='hover'] { background: var(--color-control-bg-hover); }
+@media (hover: hover) { .c-menu-option:hover { background: var(--color-control-bg-hover); } }
+.c-menu-option[data-state='hover'] .c-menu-option__count { color: var(--color-text-secondary-on-subtle); }
+@media (hover: hover) { .c-menu-option:hover .c-menu-option__count { color: var(--color-text-secondary-on-subtle); } }

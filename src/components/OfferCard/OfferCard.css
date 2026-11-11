@@ -17,13 +17,15 @@
 .c-offer--two .c-actions, .c-offer--stacked .c-actions { flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
 .c-offer--two .c-actions__join, .c-offer--stacked .c-actions__join { width: 100%; }
 
-/* auto: switch at the breakpoints */
+/* auto: switch by the card's own width (container query), not the screen's.
+   So a 700px-wide phone/tablet gets Two column, a 358px phone gets Stacked. */
+.c-offer-wrap { container-type: inline-size; }
 .c-offer--auto { grid-template-columns: auto auto auto; grid-template-areas: 'price proof actions'; justify-content: space-between; column-gap: var(--space-6); }
-@media (max-width: 1199.98px) {
+@container (max-width: 999.98px) {
   .c-offer--auto { grid-template-columns: 1fr auto; grid-template-areas: 'price actions' 'proof actions'; justify-content: stretch; row-gap: var(--space-4); }
   .c-offer--auto .c-actions { flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
   .c-offer--auto .c-actions__join { width: 100%; }
 }
-@media (max-width: 767.98px) {
+@container (max-width: 519.98px) {
   .c-offer--auto { grid-template-columns: 1fr; grid-template-areas: 'price' 'proof' 'actions'; row-gap: var(--space-5); }
 }

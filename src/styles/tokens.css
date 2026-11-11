@@ -342,19 +342,19 @@
     --layout-columns: 4;
     --layout-margin: 16px;
     --layout-gutter: 16px;
-    --layout-hero-width: 358px;
+    --layout-hero-width: 100%;  /* R1: fluid (was 358, the Figma 390 frame) */
     --space-nav-y: var(--space-4);
     --space-hero-top: var(--space-12);
     --space-hero-bottom: var(--space-12);
     --space-hero-gap: var(--space-10);
     --space-hero-group-gap: var(--space-8);
-    --layout-hero-stats-width: 358px;
+    --layout-hero-stats-width: 100%;
     --space-offer-y: var(--space-6);
     --space-offer-x: var(--space-6);
     --space-section-y: var(--space-12);
-    --layout-join-card-width: 358px;
-    --layout-join-case-min-width: 320px;
-    --layout-join-case-max-width: 358px;
+    --layout-join-card-width: 100%;
+    --layout-join-case-min-width: 100%;
+    --layout-join-case-max-width: 100%;
     --space-stack-gap: var(--space-8);
     --space-card-padding: var(--space-6);
     --layout-card-width: 358px;

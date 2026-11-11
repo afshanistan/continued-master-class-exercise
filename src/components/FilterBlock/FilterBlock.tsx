@@ -46,6 +46,14 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
     setFocusAfter(null);
   }, [pills.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // R5: the drawer is a phone pattern; if the screen widens past 768 (rotation, resize) while it's open, close it.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const onChange = (e: MediaQueryListEvent) => { if (e.matches) setDrawerOpen(false); };
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
   const remove = (i: number) => {
     const p = pills[i];
     onChange(setGroup(filters, p.key, filters[p.key].filter((x) => x !== p.value)));
