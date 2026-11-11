@@ -9,14 +9,15 @@
 .c-course-card__content { flex: 1; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-5); }
 .c-course-card__tags { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
 .c-course-card__heading { display: flex; flex-direction: column; gap: var(--space-2); }
-/* Card title: one step below Title (18/24 serif semibold) so 4-across cards stay balanced. */
+/* Card title: Title role (20/24 serif, bold). Nov 11: up from 18 semibold so it clearly leads the 16px outcome. */
 .c-course-card__title {
   margin: 0; color: var(--color-text-primary);
-  font-family: var(--font-serif); font-weight: 600;
-  font-size: var(--font-size-18); line-height: var(--line-height-24); letter-spacing: var(--title-letter-spacing);
+  font-family: var(--font-serif); font-weight: 700;
+  font-size: var(--title-font-size); line-height: var(--title-line-height); letter-spacing: var(--title-letter-spacing);
 }
 .c-course-card__taught { margin: 0; color: var(--color-text-secondary); }
-.c-course-card__outcome { margin: 0; color: var(--color-text-primary); }
+/* Outcome in secondary gray (Nov 11) so the title is the card's only dark text block. */
+.c-course-card__outcome { margin: 0; color: var(--color-text-secondary); }
 
 /* Footer: pinned to the bottom so hours/CEUs and buttons align across a row. */
 .c-course-card__footer {
