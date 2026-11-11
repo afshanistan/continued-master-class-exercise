@@ -1,14 +1,16 @@
+import { Clock, Award } from 'lucide-react';
 import type { Course } from '../../data/courses';
 import { formatHours, formatCeus, taughtByLabel } from '../../data/courses';
 import { CourseImage } from '../CourseImage/CourseImage';
 import { TopicPill } from '../TopicPill/TopicPill';
 import { NewTag } from '../Badge/Badge';
 import { Button } from '../Button/Button';
+import { MetaItem } from '../MetaItem/MetaItem';
 import './CourseCard.css';
 
 /**
  * Course card: topic → title → taught by → outcome, then a footer pinned to the bottom
- * (hours · CEUs + View course) so footers line up across a row.
+ * (hours + CEUs with icons, then View course) so footers line up across a row.
  * The title is the course link and View course is the explicit CTA.
  * No whole-card click and no card hover (deliberate). Reviews are not shown on the card.
  */
@@ -36,7 +38,10 @@ export function CourseCard({ course: c, headingLevel = 3 }: { course: Course; he
         </div>
         <p className="c-course-card__outcome text-body">You'll learn to {c.outcome}</p>
         <div className="c-course-card__footer">
-          <p className="c-course-card__meta">{formatHours(c.hours)} · {formatCeus(c.hours)}</p>
+          <p className="c-course-card__meta">
+            <MetaItem icon={Clock}>{formatHours(c.hours)}</MetaItem>
+            <MetaItem icon={Award}>{formatCeus(c.hours)}</MetaItem>
+          </p>
           <Button href={c.url} fullWidth aria-label={`View course: ${c.title}`}>View course</Button>
         </div>
       </div>

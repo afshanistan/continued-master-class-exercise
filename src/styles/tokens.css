@@ -281,7 +281,7 @@
   --layout-join-case-min-width: 480px;
   --layout-join-case-max-width: 640px;
   --layout-card-width: 318px; /* reference only; the grid sizes cards */
-  --layout-card-height: 549px; /* reference only */
+  --layout-card-height: 537px; /* reference only */
   --space-nav-y: var(--space-6);
   --space-hero-top: var(--space-24);
   --space-hero-bottom: var(--space-24);
