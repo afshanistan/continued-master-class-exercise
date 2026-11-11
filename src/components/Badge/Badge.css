@@ -15,3 +15,6 @@
   font-size: var(--label-strong-font-size); line-height: 1;
   font-variant-numeric: tabular-nums;
 }
+
+/* Badge variant: squared (not an informational pill) with a filled sparkle. */
+.c-new-tag--badge { gap: var(--space-1); padding: var(--space-1) var(--space-2); border-radius: var(--radius-sm); }

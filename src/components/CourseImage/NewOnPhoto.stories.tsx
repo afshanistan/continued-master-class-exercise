@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { CourseImage } from './CourseImage';
 import { NewTag } from '../Badge/Badge';
 import { courses, TOPIC_LABELS, type Topic } from '../../data/courses';
+import { CourseCard } from '../CourseCard/CourseCard';
 import './explore-new-on-photo.css';
 
 const meta: Meta = { title: 'Explorations/New pill on photo', parameters: { layout: 'padded' }, globals: { backgrounds: { value: 'card' } } };
@@ -32,6 +33,26 @@ export const Comparison: StoryObj = {
           )),
         ];
       })}
+    </div>
+  ),
+};
+
+const pick = (id: string) => courses.find((c) => c.id === id)!;
+const CARDS = ['adult-aac-implementation', 'picu-rehabilitation-trends', 'lewy-body-dementia'];
+
+/** E vs. current (D), in real cards. E: squared badge + filled sparkle at the right end of the tag row. */
+export const CardsDvsE: StoryObj = {
+  name: 'Cards: D (current) vs E',
+  render: () => (
+    <div style={{ display: 'grid', gap: 32 }}>
+      {(['photo', 'row'] as const).map((placement) => (
+        <div key={placement} style={{ display: 'grid', gap: 12 }}>
+          <span className="text-label-strong">{placement === 'photo' ? 'D · Pill on photo (current)' : 'E · Squared badge + sparkle, right of tag row'}</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 318px)', gap: 24 }}>
+            {CARDS.map((id) => <CourseCard key={id} course={pick(id)} newPlacement={placement} />)}
+          </div>
+        </div>
+      ))}
     </div>
   ),
 };

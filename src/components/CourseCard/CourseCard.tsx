@@ -14,19 +14,24 @@ import './CourseCard.css';
  * The title is the course link and View course is the explicit CTA.
  * No whole-card click and no card hover (deliberate). Reviews are not shown on the card.
  */
-export function CourseCard({ course: c, headingLevel = 3 }: { course: Course; headingLevel?: 2 | 3 | 4 }) {
+export function CourseCard({ course: c, headingLevel = 3, newPlacement = 'photo' }: {
+  course: Course; headingLevel?: 2 | 3 | 4;
+  /** Exploration: 'photo' = pill on the image (current); 'row' = squared badge at the right of the tag row (option E). */
+  newPlacement?: 'photo' | 'row';
+}) {
   const H = `h${headingLevel}` as 'h3';
   const longer = c.fullTitle !== c.title;
   return (
     <article className="c-course-card">
       <div className="c-course-card__media">
         {/* New sits on the photo, apart from the topic pill, so it reads as status, not category. */}
-        {c.isNew && <NewTag />}
+        {c.isNew && newPlacement === 'photo' && <NewTag />}
         <CourseImage src={c.image} topic={c.topic} />
       </div>
       <div className="c-course-card__content">
         <div className="c-course-card__tags">
           <TopicPill topic={c.topic} />
+          {c.isNew && newPlacement === 'row' && <NewTag variant="badge" />}
         </div>
         <div className="c-course-card__heading">
           <H className="c-course-card__title">
