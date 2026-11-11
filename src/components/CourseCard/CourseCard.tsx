@@ -43,7 +43,7 @@ export function CourseCard({ course: c, headingLevel = 3, newPlacement = 'row' }
           </H>
           <p className="c-course-card__taught text-label">{taughtByLabel(c)}</p>
         </div>
-        <p className="c-course-card__outcome text-body">You'll learn to {c.outcome}</p>
+        <p className="c-course-card__outcome text-body">{c.outcome}</p>
         <div className="c-course-card__footer">
           <p className="c-course-card__meta">
             <MetaItem icon={Clock}>{formatHours(c.hours)}</MetaItem>

@@ -19,6 +19,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 5 | ❓ | Icon library / Meta Item | Footer meta uses Meta Items with icons: **Clock** (hours) and Lucide **Award** (CEUs). Figma uses a **Credit** icon for CEUs: pick one and match. Star icon no longer used on the card | Icons restored Nov 10 |
 | 6 | — | Course Card | ~~Hide review count at 0~~. Moot: reviews are off the card (#20) | — |
 | 7 | ❓ | Review Card | Quote + attribution ("Dana Scully, MS · Rush Medical") and Trustpilot score/count are still placeholders | Verify before the walkthrough |
+| 48 | ⬜ | Section / Catalog → all 16 cards (Course Card → Outcome) | Drop the fixed **"You'll learn to"** prefix. Each outcome is now a full sentence with a varied opening verb ("Learn to", "Discover how to", "Gain strategies to", "Practice", "Use", …). Copy per course: `src/data/courses.ts` | Nov 11: 16 cards starting with the same three words read as repetitive |
 
 ## Components
 
@@ -56,6 +57,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 | 44 | 📝 | Section / Hero (prototype) | Optional: mirror the on-load appear in the Figma prototype with Smart Animate / After Delay: text **rises** 9–15 (100–480ms), then tile + offer card **press on** (scale 1.06 / 1.0225 → 1, drop 6) at 560 / 680ms, `ease-appear` ≈ custom bezier 0.12, 0.23, 0.5, 1. Full table in Design-in-Code → Hero | Code-only motion |
 | 45 | 📝 | Section / Join (prototype) | Optional: on-scroll appear with the hero's settings: headline rises 15 (140ms), body 12 (240ms); Membership Card then quote card press on (1.0225 → 1, drop 6) at 560 / 680ms | Code-only motion |
 | 46 | 📝 | Section / Catalog + Filter Block + Filter Drawer (prototype) | Annotate the catalog motion (code-only): grid reflow on filter (leave 150 / slide 300 / enter 300 + 30ms stagger), applied-filters row opens (220) / closes (100 fade + 180), pill enter / leave, badge scale-in, menu close fade (100), drawer slide-down (220) + swipe to dismiss, scroll back to the filter bar. Full table: Design-in-Code → Motion pass: Catalog batch | Code-only motion |
+| 47 | ⬜ | Menu Option + Toggle Chip + Filter Menu (all variants) | **Remove the per-option course count** from Menu Option and Toggle Chip (hide the count layer or drop the property). In Filter Menu, rename **Apply → "Show N courses"** (e.g., "Show 3 courses"; button hugs the label). Update the Applied prototype frame to match | Static per-tag counts contradicted the live result (Neuro 7 vs. Neuro + 3 hrs = 1); desktop now matches the mobile drawer's live count |
 | 23 | ⬜ | Meta Item | Icon color `neutral/900` → **`text/secondary`** (same gray as the value); icon-to-text gap 8 → **4** (`space/1`). Icons stay **outline** | Nov 10: icons were louder than their numbers; outline = functional, filled = brand/celebration |
 
 ## Patterns, layout, and prototype flows
