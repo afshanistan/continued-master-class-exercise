@@ -24,7 +24,7 @@ Behavior details live in the Design-in-Code log. This log is only for what Figma
 
 | # | Status | Where in Figma | Change to make | Why / source |
 |---|---|---|---|---|
-| 8 | ⬜ | Text Link (all tones) | **Rest:** 1px underline track (Default: link color at 35%; Subtle: full strength; On dark: 50%). **Hover:** 2px underline in the link color. Add the track to the Default/rest variant | Links never rely on color alone; hover wipe is code-only (📝) |
+| 8 | ⬜ | Text Link (all tones) | **Rest:** 1px underline (Default: link color at 35%; Subtle: full strength; On dark: 50%). **Hover:** label + underline in the hover color, underline **2px**. **On dark hover → magenta 300** (new token `text/link-on-inverse-hover`, = Join now button). No draw-in (buttons wipe, links thicken) | Links never rely on color alone; revised Nov 10 |
 | 9 | ⬜ | Checkbox (Checked) | Check glyph → single-stroke check with round caps (path `M5 12.5l4.5 4.5L19 7`, stroke 3.2 on a 24 grid) instead of the filled Check icon | Needed for the draw-on animation |
 | 10 | ⬜ | Toggle Chip (Unselected, Pressed) | Count color → **magenta 800** (`control/active`), not neutral | Contrast fix Nov 10 (gray was ~3.8:1 on pink) |
 | 11 | ⬜ | Action Group | "Already a member? Log in": only **"Log in"** is the link; "Already a member?" is plain text (on-inverse-muted) | Link text should be just the action |

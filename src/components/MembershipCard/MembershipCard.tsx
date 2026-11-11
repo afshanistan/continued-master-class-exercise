@@ -23,7 +23,7 @@ export function MembershipCard() {
       <ul className="c-membership__benefits">
         {BENEFITS.map((b) => <CheckItem key={b} surface="dark">{b}</CheckItem>)}
       </ul>
-      <ActionGroup layout="stacked" />
+      <ActionGroup layout="inline" className="c-membership__actions" />
     </div>
   );
 }

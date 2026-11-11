@@ -10,3 +10,9 @@
 .c-membership__monthly { color: var(--color-text-on-inverse-muted); }
 .c-membership__includes { margin: 0; }
 .c-membership__benefits { margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+
+/* Actions: inline (Join now + Log in), like the hero offer card. Phones: stacked, full-width button. */
+@media (max-width: 767.98px) {
+  .c-membership .c-actions { flex-direction: column; align-items: stretch; gap: var(--space-4); text-align: center; }
+  .c-membership .c-actions__join { width: 100%; }
+}
