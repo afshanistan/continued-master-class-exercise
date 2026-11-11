@@ -19,8 +19,8 @@ export interface FilterBlockProps {
 }
 
 /**
- * The catalog filter bar. Desktop/tablet: Filter by + three Filter Selects + result count.
- * Mobile (<768): Filters button (opens the drawer) + result count. Both: removable pills + Clear all.
+ * The catalog filter bar. Desktop/tablet: Filter by + three Filter Selects. Mobile (<768): Filters button
+ * (opens the drawer). Both: removable pills + Clear all, then the result count on its own line above the grid.
  */
 export function FilterBlock({ filters, onChange, shown, total = courses.length }: FilterBlockProps) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -61,12 +61,10 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
           <FilterSelect key={g.key} label={g.label} options={OPTIONS[g.key]} applied={filters[g.key]}
             onApply={(v) => onChange(setGroup(filters, g.key, v))} />
         ))}
-        <p className="c-filter-block__count" aria-live="polite"><span className="visually-hidden">Showing </span>{shown} of {total} courses</p>
       </div>
 
       <div className="c-filter-block__bar c-filter-block__bar--narrow">
         <FiltersButton count={applied} expanded={drawerOpen} onClick={() => setDrawerOpen(true)} />
-        <p className="c-filter-block__count" aria-live="polite"><span className="visually-hidden">Showing </span>{shown} of {total} courses</p>
       </div>
 
       {pills.length > 0 && (
@@ -81,6 +79,11 @@ export function FilterBlock({ filters, onChange, shown, total = courses.length }
           <TextLink as="button" tone="subtle" onClick={clearAll}>Clear all</TextLink>
         </div>
       )}
+
+      {/* Result count: its own line, left-aligned, directly above the grid (one live region for both layouts). */}
+      <p className="c-filter-block__count" aria-live="polite">
+        Showing <strong>{shown}</strong> of <strong>{total}</strong> {total === 1 ? 'course' : 'courses'}
+      </p>
 
       <FilterDrawer open={drawerOpen} applied={filters} onApply={onChange} onClose={() => setDrawerOpen(false)} />
     </div>
