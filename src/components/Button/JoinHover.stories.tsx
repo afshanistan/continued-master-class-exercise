@@ -11,9 +11,9 @@ const OPTIONS = [
   { k: 'b', name: 'B · Neon', note: 'Richer core (400) + halo. Press: deeper (500), halo tightens.' },
   { k: 'c', name: 'C · Glow + arrow', note: 'A, plus an arrow (visible at rest) that nudges right on hover.' },
   { k: 'd', name: 'D · Lift', note: 'Rises 2px on a deep shadow (lift and land, like the light buttons). Press lands, lighter.' },
-  { k: 'e', name: 'E · Wipe, lighter (soft)', note: 'Lighter magenta (200) fills left → right, softer timing (380ms in / 250 out). Press: lighter still (100).' },
-  { k: 'f', name: 'F · Wipe, deeper + arrow', note: 'Richer magenta (400) fills left → right; the arrow nudges as the fill lands. Press: holds 400, pressed-in shadow.' },
-  { k: 'g', name: 'G · Wipe, deeper', note: 'F without the arrow.' },
+  { k: 'e', name: 'E · Wipe, lighter (soft)', note: 'Lighter magenta (200) fills left → right, softer timing (380ms in / 250 out). Press: a second, faster wipe (100ms) to the lightest pink.' },
+  { k: 'f', name: 'F · Wipe, deeper + arrow', note: 'Richer magenta (400) fills left → right; the arrow nudges as the fill lands. Press: scale 0.98, deeper pressed-in shadow, arrow pushes 2px further.' },
+  { k: 'g', name: 'G · Wipe, deeper', note: 'F without the arrow (same press: scale + shadow).' },
 ] as const;
 
 const Label = ({ k }: { k: string }) => (k === 'c' || k === 'f' ? <>Join now<ArrowRight className="x-arrow" size={18} strokeWidth={2.25} aria-hidden="true" /></> : <>Join now</>);
