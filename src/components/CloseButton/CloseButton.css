@@ -2,8 +2,8 @@
   display: grid; place-items: center; flex: none;
   width: var(--size-touch-target); height: var(--size-touch-target);
   border: 0; border-radius: var(--radius-full); background: transparent; color: var(--color-control-text);
-  cursor: pointer; transition: background-color var(--duration-hover-out) var(--ease-out);
+  cursor: pointer; transition: background-color var(--duration-color-out) var(--ease-color);
 }
-.c-close:hover, .c-close[data-state='hover'] { background: var(--color-control-bg-hover); transition-duration: var(--duration-fast); }
-.c-close:active, .c-close[data-state='pressed'] { background: var(--color-control-bg-pressed); transition-duration: var(--duration-press); }
+.c-close:hover, .c-close[data-state='hover'] { background: var(--color-control-bg-hover); transition-duration: var(--duration-color-in); }
+.c-close:active, .c-close[data-state='pressed'] { background: var(--color-control-bg-pressed); transition-duration: var(--duration-color-press); }
 .c-close:focus-visible, .c-close[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); }

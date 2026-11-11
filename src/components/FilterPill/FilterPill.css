@@ -9,7 +9,7 @@
   font-family: var(--font-sans); font-weight: 500;
   font-size: var(--label-font-size); line-height: var(--label-line-height); letter-spacing: var(--label-letter-spacing);
   cursor: pointer;
-  transition: background-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  transition: background-color var(--duration-color-out) var(--ease-color), box-shadow var(--duration-color-out) var(--ease-color), transform var(--duration-fast) var(--ease-out);
 }
 /* 30px visual → 44px tap target */
 .c-filter-pill::after { content: ''; position: absolute; inset: -7px 0; }
@@ -18,14 +18,14 @@
   display: grid; place-items: center; flex: none;
   width: 18px; height: 18px; border-radius: var(--radius-full);
   background: var(--color-selection-bg); color: var(--color-selection-control-icon);
-  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  transition: background-color var(--duration-color-out) var(--ease-color), color var(--duration-color-out) var(--ease-color);
 }
 
 .c-filter-pill:hover, .c-filter-pill[data-state='hover'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); }
 .c-filter-pill:hover .c-filter-pill__close, .c-filter-pill[data-state='hover'] .c-filter-pill__close { background: var(--color-selection-control-bg-hover); color: var(--color-selection-control-icon-hover); }
 
-.c-filter-pill:active, .c-filter-pill[data-state='pressed'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); transition-duration: var(--duration-press); }
-.c-filter-pill:active .c-filter-pill__close, .c-filter-pill[data-state='pressed'] .c-filter-pill__close { background: var(--color-selection-control-bg-pressed); color: var(--color-selection-control-icon-hover); transition-duration: var(--duration-press); }
+.c-filter-pill:active, .c-filter-pill[data-state='pressed'] { background: var(--color-selection-bg-hover); box-shadow: inset 0 0 0 1px var(--color-selection-border-hover); transition-duration: var(--duration-color-press); }
+.c-filter-pill:active .c-filter-pill__close, .c-filter-pill[data-state='pressed'] .c-filter-pill__close { background: var(--color-selection-control-bg-pressed); color: var(--color-selection-control-icon-hover); transition-duration: var(--duration-color-press); }
 
 .c-filter-pill:focus-visible, .c-filter-pill[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); transition: none; }
 

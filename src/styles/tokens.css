@@ -368,6 +368,13 @@
 :root {
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Color / shadow changes (hover, press, focus fills). Gentle in-out so the change is
+     perceptible; the quint above front-loads ~90% of a change into the first third,
+     which made color hovers read as instant. */
+  --ease-color: cubic-bezier(0.37, 0, 0.63, 1);
+  --duration-color-in: 200ms;
+  --duration-color-out: 250ms;
+  --duration-color-press: 100ms;
   --duration-press: 90ms;   /* :active feedback */
   --duration-fast: 150ms;   /* hover color / shadow (in) */
   --duration-hover-out: 200ms; /* hover color / shadow (out): leaving is slightly slower */

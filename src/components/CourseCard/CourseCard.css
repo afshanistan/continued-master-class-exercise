@@ -29,8 +29,8 @@
 .c-course-card__title a {
   color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
   text-decoration-color: transparent;
-  transition: text-decoration-color var(--duration-hover-out) var(--ease-out);
+  transition: text-decoration-color var(--duration-color-out) var(--ease-color);
   border-radius: 2px;
 }
-.c-course-card__title a:hover { text-decoration-color: currentColor; transition-duration: var(--duration-fast); }
+.c-course-card__title a:hover { text-decoration-color: currentColor; transition-duration: var(--duration-color-in); }
 .c-course-card__title a:focus-visible { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); }

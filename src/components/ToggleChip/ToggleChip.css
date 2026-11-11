@@ -5,14 +5,14 @@
   background: var(--color-control-bg); color: var(--color-control-text);
   box-shadow: inset 0 0 0 1px var(--color-control-border);
   font-family: var(--font-sans); font-size: var(--body-font-size); line-height: var(--body-line-height);
-  transition: background-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  transition: background-color var(--duration-color-out) var(--ease-color), box-shadow var(--duration-color-out) var(--ease-color), color var(--duration-color-out) var(--ease-color), transform var(--duration-fast) var(--ease-out);
 }
 .c-chip__count { font-size: var(--body-small-font-size); line-height: var(--body-small-line-height); color: var(--color-text-secondary); }
 
 /* Unselected */
 .c-chip:hover, .c-chip[data-state='hover'] { background: var(--color-selection-bg-subtle); box-shadow: inset 0 0 0 1px var(--color-control-border-interactive); color: var(--color-control-active); }
 .c-chip:hover .c-chip__count, .c-chip[data-state='hover'] .c-chip__count { color: var(--color-control-active); }
-.c-chip:active, .c-chip[data-state='pressed'] { background: var(--color-selection-bg); box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); transition-duration: var(--duration-press); }
+.c-chip:active, .c-chip[data-state='pressed'] { background: var(--color-selection-bg); box-shadow: inset 0 0 0 1px var(--color-control-active); color: var(--color-control-active); transition-duration: var(--duration-color-press); }
 /* Pressed must not rely on hover (keyboard Space press has no hover). */
 .c-chip:active .c-chip__count, .c-chip[data-state='pressed'] .c-chip__count { color: var(--color-control-active); }
 

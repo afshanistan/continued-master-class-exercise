@@ -21,7 +21,7 @@
   appearance: none; background: none; margin: 0; cursor: pointer; text-align: inherit;
   border: 0; padding: 0 0 2px;
   border-bottom: 1px solid var(--track);
-  transition: color var(--duration-fast) var(--ease-out);
+  transition: color var(--duration-color-out) var(--ease-color);
 }
 .c-link::before {
   content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
