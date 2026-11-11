@@ -1,5 +1,6 @@
-.c-meta { display: inline-flex; align-items: center; gap: var(--space-2); white-space: nowrap; }
-.c-meta__icon { flex: none; color: var(--color-text-primary); }
+.c-meta { display: inline-flex; align-items: center; gap: var(--space-1); white-space: nowrap; }
+/* Icon matches the text color so each pair reads as one quiet unit. */
+.c-meta__icon { flex: none; color: var(--color-text-secondary); }
 .c-meta__value {
   font-family: var(--font-sans); font-weight: 500; color: var(--color-text-secondary);
   font-size: var(--label-font-size); line-height: var(--label-line-height); letter-spacing: var(--label-letter-spacing);
