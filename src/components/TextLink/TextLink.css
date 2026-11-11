@@ -1,40 +1,22 @@
 /*
- * Underline = track + fill.
- *   Track: 1px bottom border, always visible, says "this is a link" at rest.
- *   Fill:  2px bar (::before) in the link color that wipes left → right on hover
- *          with transform: scaleX (220ms, --ease-out) and retracts on hover out (180ms).
- *          Reduced motion: appears instantly.
- * Why not a background gradient: axe can't compute text contrast over one and
- * reports "inconclusive". Borders and a small pseudo-element don't block it.
- * Trade-off: inline-block, so a link that wraps only underlines its last line.
+ * Text link (decided Nov 10): underlined at rest; on hover the label and underline take the
+ * hover color and the underline thickens 1 → 2px. No draw-in (buttons wipe, links thicken).
+ * Plain text-decoration, so wrapped links underline every line and axe can check contrast.
+ * Color eases (--ease-color); Safari snaps the thickness change, which is fine at 1px.
  */
 .c-link {
   --track: color-mix(in srgb, currentColor 35%, transparent);
   position: relative;
-  display: inline-block;
-  /* In a flex/grid parent, keep the link the width of its text. */
-  justify-self: start; align-self: start; width: fit-content;
   font-family: var(--font-sans); font-weight: 500;
   font-size: var(--body-small-font-size); line-height: var(--body-small-line-height);
-  text-decoration: none;
-  /* Button reset (as="button"), keeping the track border */
-  appearance: none; background: none; margin: 0; cursor: pointer; text-align: inherit;
-  border: 0; padding: 0 0 2px;
-  border-bottom: 1px solid var(--track);
-  transition: color var(--duration-color-out) var(--ease-color);
+  text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+  text-decoration-color: var(--track);
+  /* Button reset (as="button") */
+  appearance: none; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit;
+  transition: color var(--duration-color-out) var(--ease-color), text-decoration-color var(--duration-color-out) var(--ease-color),
+              text-decoration-thickness var(--duration-color-out) var(--ease-color);
 }
-.c-link::before {
-  content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
-  background: currentColor;
-  transform: scaleX(0); transform-origin: left center;
-  pointer-events: none;
-}
-.c-link:hover::before, .c-link[data-state='hover']::before { transform: scaleX(1); }
-
-@media (prefers-reduced-motion: no-preference) {
-  .c-link::before { transition: transform var(--duration-retract) var(--ease-out); }
-  .c-link:hover::before, .c-link[data-state='hover']::before { transition-duration: var(--duration-move); }
-}
+.c-link:hover, .c-link[data-state='hover'] { text-decoration-thickness: 2px; text-decoration-color: currentColor; transition-duration: var(--duration-color-in); }
 
 /* Tap target: reach 44px without changing layout */
 .c-link::after { content: ''; position: absolute; inset: -10px -4px; }
@@ -43,12 +25,13 @@
 .c-link--default.c-link--light { color: var(--color-text-link); }
 .c-link--default.c-link--light:hover, .c-link--default.c-link--light[data-state='hover'] { color: var(--color-text-link-hover); }
 
-/* Subtle = inline links; its track is the full-strength underline it already had. */
+/* Subtle = inline links; the underline is full strength at rest. */
 .c-link--subtle.c-link--light { color: var(--color-text-link-subtle); --track: currentColor; }
 .c-link--subtle.c-link--light:hover, .c-link--subtle.c-link--light[data-state='hover'] { color: var(--color-text-link-subtle-hover); }
 
+/* On dark: hover takes the Join now magenta (300). */
 .c-link--dark { color: var(--color-text-on-inverse); --track: color-mix(in srgb, currentColor 50%, transparent); }
-.c-link--dark:hover, .c-link--dark[data-state='hover'] { color: var(--color-base-white); }
+.c-link--dark:hover, .c-link--dark[data-state='hover'] { color: var(--color-text-link-on-inverse-hover); }
 
 .c-link:focus-visible, .c-link[data-state='focus'] { outline: var(--focus-width) solid var(--color-focus-ring); outline-offset: var(--focus-offset); border-radius: 2px; }
 .c-link--dark:focus-visible, .c-link--dark[data-state='focus'] { outline-color: var(--color-focus-ring-on-inverse); }

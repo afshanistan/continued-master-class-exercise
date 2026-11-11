@@ -108,6 +108,7 @@
   --color-border-subtle: var(--color-neutral-200);
   --color-text-link-subtle: var(--color-magenta-800);
   --color-text-link-subtle-hover: var(--color-magenta-900);
+  --color-text-link-on-inverse-hover: var(--color-magenta-300); /* same as the Join now button */
   --color-topic-neuro-tint: var(--color-indigo-200);
   --color-topic-neuro-pill-bg: var(--color-indigo-100);
   --color-topic-neuro-pill-text: var(--color-indigo-800);

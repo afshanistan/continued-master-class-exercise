@@ -26,13 +26,13 @@ export const Default: Story = { render: () => <Row tone="default" surface="light
 export const Subtle: Story = { render: () => <Row tone="subtle" surface="light" label="850 reviews" /> };
 export const OnDark: Story = { globals: { backgrounds: { value: 'inverse' } }, render: () => <Row tone="default" surface="dark" label="Log in" /> };
 
-/** Hover to see the wipe. Second example: a short link inline in a sentence. */
-export const Wipe: Story = {
+/** Hover: color + underline thickens. Second example: a link inline in a sentence that wraps (every line is underlined). */
+export const Inline: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 24, width: 220 }}>
       <TextLink href="#">Clear all</TextLink>
       <p className="text-body-small" style={{ margin: 0 }}>
-        TrustScore 4.6 from <TextLink href="#" tone="subtle">850 reviews</TextLink> on Trustpilot.
+        Read what members say: <TextLink href="#" tone="subtle">TrustScore details and all 850 reviews on Trustpilot</TextLink>, updated weekly.
       </p>
     </div>
   ),
