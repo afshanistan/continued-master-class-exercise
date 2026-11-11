@@ -30,20 +30,18 @@
   .s-join .c-membership { max-width: none; }
 }
 
-/* ── Appear on scroll (Nov 10). Same grammar as the hero (text rises, frames press on), much quieter:
-   rise 6, press 1.015 → 1 with a 4px drop, 350ms each, ~500ms total, no pause. Plays once per item
-   when it is ~20% visible (useAppearOnScroll). Reduced motion / no JS: content just shows. */
-@keyframes join-rise { from { opacity: 0; transform: translateY(6px); } }
-@keyframes join-press { 0% { opacity: 0; transform: translateY(-4px) scale(1.015); } 40% { opacity: 1; } }
+/* ── Appear on scroll (Nov 10, revised): the hero's settings. Text rises (headline 15 / 450ms,
+   body 12 / 350ms); then the cards press on like the hero's stickers (scale 1.0225 → 1, drop 6, 450ms),
+   top to bottom. Plays once per item when it is ~20% visible (useAppearOnScroll). Reduced motion / no JS: visible. */
 @media (prefers-reduced-motion: no-preference) {
   .s-join[data-appear-ready] :is(.s-join__heading, .s-join__body, .c-review, .c-membership):not(.is-in) { opacity: 0; }
   .s-join[data-appear-ready] .is-in {
-    animation: var(--join-anim) calc(350ms * var(--appear-speed)) var(--ease-appear) calc(var(--join-delay, 0ms) * var(--appear-speed)) both;
+    animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay, 0ms) * var(--appear-speed)) both;
   }
-  .s-join__heading { --join-anim: join-rise; --join-delay: 0ms; }
-  .s-join__body    { --join-anim: join-rise; --join-delay: 60ms; }
-  .s-join .c-membership { --join-anim: join-press; --join-delay: 100ms; }
-  .s-join .c-review     { --join-anim: join-press; --join-delay: 180ms; }
+  .s-join__heading      { --appear-name: appear-rise;  --appear-y: 15px; --appear-dur: 450ms; --appear-delay: 140ms; }
+  .s-join__body         { --appear-name: appear-rise;  --appear-y: 12px; --appear-dur: 350ms; --appear-delay: 240ms; }
+  .s-join .c-membership { --appear-name: appear-press; --appear-y: 6px; --appear-scale: 1.0225; --appear-dur: 450ms; --appear-delay: 560ms; }
+  .s-join .c-review     { --appear-name: appear-press; --appear-y: 6px; --appear-scale: 1.0225; --appear-dur: 450ms; --appear-delay: 680ms; }
 }
 /* Stacked (tablet/phone): the cards arrive on their own as you scroll, so no extra wait. */
 @media (max-width: 1199.98px) {

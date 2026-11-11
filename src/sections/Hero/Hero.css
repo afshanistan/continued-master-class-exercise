@@ -39,11 +39,7 @@
    Text rises (cascade, 100–480ms). Then the two framed pieces are "pressed on" like stickers,
    top to bottom: they start slightly larger and a few px higher and settle to size (fade done by 40%).
    The icon moves with its tile. Reduced motion: none. */
-@keyframes appear-rise { from { opacity: 0; transform: translateY(var(--appear-y)); } }
-@keyframes appear-press {
-  0% { opacity: 0; transform: translateY(calc(var(--appear-y) * -1)) scale(var(--appear-scale)); }
-  40% { opacity: 1; }
-}
+/* Keyframes appear-rise / appear-press live in styles/base.css (shared with Join). */
 @media (prefers-reduced-motion: no-preference) {
   .s-hero__tile, .s-hero__eyebrow, .s-hero__headline, .s-hero__definition, .s-hero__stat, .s-hero__offer {
     animation: var(--appear-name) calc(var(--appear-dur) * var(--appear-speed)) var(--ease-appear) calc(var(--appear-delay) * var(--appear-speed)) both;

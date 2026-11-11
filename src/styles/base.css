@@ -50,3 +50,10 @@ html.is-scroll-locked { overflow: hidden; }
 
 /* iOS: no default gray-blue tap flash; every control has its own pressed state. */
 a, button, label, input { -webkit-tap-highlight-color: transparent; }
+
+/* Appear keyframes (hero on load, Join on scroll). Per-element vars: --appear-y, --appear-scale. */
+@keyframes appear-rise { from { opacity: 0; transform: translateY(var(--appear-y)); } }
+@keyframes appear-press {
+  0% { opacity: 0; transform: translateY(calc(var(--appear-y) * -1)) scale(var(--appear-scale)); }
+  40% { opacity: 1; }
+}
